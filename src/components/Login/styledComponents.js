@@ -49,7 +49,6 @@ export const LoginInputElement = styled.input`
   font-size: 14px;
   height: 40px;
   border: 1px solid #d7dfe9;
-  background-color: #e2e8f0;
   color: #64748b;
   border-radius: 2px;
   margin-top: 5px;

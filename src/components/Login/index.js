@@ -15,7 +15,7 @@ import {
   LoginInputContainer,
 } from './styledComponents'
 
-class LoginForm extends Component {
+class Login extends Component {
   state = {
     username: '',
     password: '',
@@ -124,4 +124,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default Login

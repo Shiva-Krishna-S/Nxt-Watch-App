@@ -1,12 +1,12 @@
 import {Switch, Route} from 'react-router-dom'
-import LoginForm from './components/LoginForm'
+import Login from './components/Login'
 import Home from './components/Home'
 import ProtectedRoute from './components/ProtectedRoute'
 import './App.css'
 
 const App = () => (
   <Switch>
-    <Route exact path="/login" component={LoginForm} />
+    <Route exact path="/login" component={Login} />
     <ProtectedRoute exact path="/" component={Home} />
   </Switch>
 )
