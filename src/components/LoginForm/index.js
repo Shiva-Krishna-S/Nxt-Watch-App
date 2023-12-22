@@ -12,6 +12,7 @@ import {
   ShowPasswordText,
   LoginButton,
   ErrorMessageText,
+  LoginInputContainer,
 } from './styledComponents'
 
 class LoginForm extends Component {
@@ -85,22 +86,26 @@ class LoginForm extends Component {
       <LoginPageContainer>
         <LoginFormContainer onSubmit={this.onSubmitLoginForm}>
           <LoginLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-          <LoginInputLabel htmlFor="username">USERNAME</LoginInputLabel>
-          <LoginInputElement
-            type="text"
-            placeholder="Username"
-            id="username"
-            onChange={this.onChangeUsername}
-            value={username}
-          />
-          <LoginInputLabel htmlFor="password">PASSWORD</LoginInputLabel>
-          <LoginInputElement
-            type={showPassword ? 'text' : 'password'}
-            placeholder="Password"
-            id="password"
-            onChange={this.onChangePassword}
-            value={password}
-          />
+          <LoginInputContainer>
+            <LoginInputLabel htmlFor="username">USERNAME</LoginInputLabel>
+            <LoginInputElement
+              type="text"
+              placeholder="Username"
+              id="username"
+              onChange={this.onChangeUsername}
+              value={username}
+            />
+          </LoginInputContainer>
+          <LoginInputContainer>
+            <LoginInputLabel htmlFor="password">PASSWORD</LoginInputLabel>
+            <LoginInputElement
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Password"
+              id="password"
+              onChange={this.onChangePassword}
+              value={password}
+            />
+          </LoginInputContainer>
           <ShowPasswordContainer>
             <PasswordCheckbox
               htmlFor="showPassword"
