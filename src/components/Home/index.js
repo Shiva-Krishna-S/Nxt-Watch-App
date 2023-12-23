@@ -1,4 +1,4 @@
-import {MdClose, MdSearch} from 'react-icons/md'
+import {MdClose} from 'react-icons/md'
 import Header from '../Header'
 import AllVideosSection from '../AllVideosSection'
 import {
@@ -9,9 +9,6 @@ import {
   BannerText,
   GetItNowButton,
   BannerCloseButton,
-  SearchContainer,
-  SearchInput,
-  SearchButton,
 } from './styledComponents'
 
 const Home = () => (
@@ -28,12 +25,6 @@ const Home = () => (
           <MdClose />
         </BannerCloseButton>
       </BannerContainer>
-      <SearchContainer>
-        <SearchInput type="search" placeholder="Search" />
-        <SearchButton>
-          <MdSearch />
-        </SearchButton>
-      </SearchContainer>
       <AllVideosSection />
     </HomeContentContainer>
   </>

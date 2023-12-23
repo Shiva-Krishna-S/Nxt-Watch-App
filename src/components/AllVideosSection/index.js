@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {MdSearch} from 'react-icons/md'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import VideoCard from '../VideoCard'
@@ -10,6 +11,13 @@ import {
   FailureHeading,
   FailureMessage,
   RetryButton,
+  SearchContainer,
+  SearchInput,
+  SearchButton,
+  NoSearchResultsView,
+  NoSearchResultsImage,
+  NoSearchResultsHeading,
+  NoSearchResultsMessage,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -20,7 +28,12 @@ const apiStatusConstants = {
 }
 
 class AllVideosSection extends Component {
-  state = {allVideosList: [], apiStatus: apiStatusConstants.initial}
+  state = {
+    allVideosList: [],
+    apiStatus: apiStatusConstants.initial,
+    searchInput: '',
+    isEmptyList: false,
+  }
 
   componentDidMount() {
     this.getAllVideosData()
@@ -29,7 +42,8 @@ class AllVideosSection extends Component {
   getAllVideosData = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/videos/all?search='
+    const {searchInput} = this.state
+    const apiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -62,9 +76,41 @@ class AllVideosSection extends Component {
     }
   }
 
+  onChangeSearchInput = event => {
+    this.setState({searchInput: event.target.value})
+  }
+
+  onSearchInputKeydown = event => {
+    if (event.key === 'Enter') {
+      this.getAllVideosData()
+    }
+  }
+
+  onClickSearchIcon = () => {
+    this.getAllVideosData()
+  }
+
+  renderNoSearchResults = () => (
+    <NoSearchResultsView>
+      <NoSearchResultsImage
+        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+        alt="no videos"
+      />
+      <NoSearchResultsHeading>No Search results found</NoSearchResultsHeading>
+      <NoSearchResultsMessage>
+        Try different key words or remove search filter
+      </NoSearchResultsMessage>
+      <RetryButton>Retry</RetryButton>
+    </NoSearchResultsView>
+  )
+
   renderSuccessView = () => {
     const {allVideosList} = this.state
-    return (
+    const shouldShowVideoList = allVideosList.length === 0
+
+    return shouldShowVideoList ? (
+      this.renderNoSearchResults()
+    ) : (
       <AllVideosListContainer>
         {allVideosList.map(eachVideo => (
           <VideoCard key={eachVideo.id} videoDetails={eachVideo} />
@@ -93,7 +139,7 @@ class AllVideosSection extends Component {
     </AllVideosFailureView>
   )
 
-  render() {
+  renderPageViews = () => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
@@ -106,6 +152,25 @@ class AllVideosSection extends Component {
       default:
         return null
     }
+  }
+
+  render() {
+    return (
+      <>
+        <SearchContainer>
+          <SearchInput
+            type="search"
+            placeholder="Search"
+            onChange={this.onChangeSearchInput}
+            onKeyDown={this.onSearchInputKeydown}
+          />
+          <SearchButton onClick={this.onClickSearchIcon}>
+            <MdSearch />
+          </SearchButton>
+        </SearchContainer>
+        {this.renderPageViews()}
+      </>
+    )
   }
 }
 

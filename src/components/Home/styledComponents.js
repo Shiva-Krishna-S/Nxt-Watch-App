@@ -40,10 +40,3 @@ export const GetItNowButton = styled.button``
 export const BannerCloseButton = styled.button`
   align-self: flex-start;
 `
-export const SearchContainer = styled.div`
-  display: flex;
-`
-export const SearchInput = styled.input`
-  width: 250px;
-`
-export const SearchButton = styled.button``
