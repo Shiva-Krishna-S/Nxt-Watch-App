@@ -25,6 +25,7 @@ const Home = () => (
           <MdClose />
         </BannerCloseButton>
       </BannerContainer>
+
       <AllVideosSection />
     </HomeContentContainer>
   </>

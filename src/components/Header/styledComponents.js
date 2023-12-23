@@ -1,9 +1,9 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const NavbarContainer = styled.nav`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 `
 export const NavContentContainer = styled.div`
   width: 100%;
@@ -45,6 +45,13 @@ export const NavItem = styled.li`
     margin-left: 40px;
   }
 `
+export const NavItemButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+`
 export const ProfileImage = styled.img`
   width: 30px;
   @media screen and (max-width: 767px) {
@@ -52,3 +59,20 @@ export const ProfileImage = styled.img`
   }
 `
 export const LogoutButton = styled.button``
+
+export const NavMenuItemsContainer = styled.ul`
+  padding-left: 0;
+`
+export const MenuItem = styled.li`
+  list-style-type: none;
+`
+export const MenuItemName = styled.p`
+  font-family: 'Roboto';
+  font-size: 14px;
+`
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+`

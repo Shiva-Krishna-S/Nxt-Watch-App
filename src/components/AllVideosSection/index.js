@@ -32,7 +32,6 @@ class AllVideosSection extends Component {
     allVideosList: [],
     apiStatus: apiStatusConstants.initial,
     searchInput: '',
-    isEmptyList: false,
   }
 
   componentDidMount() {
