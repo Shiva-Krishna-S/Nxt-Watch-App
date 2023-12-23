@@ -10,6 +10,7 @@ import {
   VideoTitle,
   StatusDetails,
   StatText,
+  StyledLink,
 } from './styledComponents'
 
 const VideoCard = props => {
@@ -30,24 +31,26 @@ const VideoCard = props => {
 
   return (
     <VideoCardItem>
-      <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-      <VideoDetailsContainer>
-        <ChannelImage src={profileImageUrl} alt="channel logo" />
-        <VideoStatsContainer>
-          <VideoTitle>{title}</VideoTitle>
-          <StatusDetails>
-            <StatText>{name}</StatText>
-            <StatText>
-              <BsDot size="10" />
-            </StatText>
-            <StatText>{viewCount} views</StatText>
-            <StatText>
-              <BsDot size="10" />
-            </StatText>
-            <StatText>{postedTime}</StatText>
-          </StatusDetails>
-        </VideoStatsContainer>
-      </VideoDetailsContainer>
+      <StyledLink to={`/videos/${id}`}>
+        <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+        <VideoDetailsContainer>
+          <ChannelImage src={profileImageUrl} alt="channel logo" />
+          <VideoStatsContainer>
+            <VideoTitle>{title}</VideoTitle>
+            <StatusDetails>
+              <StatText>{name}</StatText>
+              <StatText>
+                <BsDot size="10" />
+              </StatText>
+              <StatText>{viewCount} views</StatText>
+              <StatText>
+                <BsDot size="10" />
+              </StatText>
+              <StatText>{postedTime}</StatText>
+            </StatusDetails>
+          </VideoStatsContainer>
+        </VideoDetailsContainer>
+      </StyledLink>
     </VideoCardItem>
   )
 }

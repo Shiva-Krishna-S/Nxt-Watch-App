@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const VideoCardItem = styled.li`
   list-style-type: none;
@@ -12,6 +13,10 @@ export const VideoCardItem = styled.li`
     width: 33%;
   }
 `
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+
 export const VideoThumbnailImage = styled.img`
   width: 100%;
 `
