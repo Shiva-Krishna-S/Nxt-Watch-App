@@ -1,5 +1,6 @@
 import {MdClose, MdSearch} from 'react-icons/md'
 import Header from '../Header'
+import AllVideosSection from '../AllVideosSection'
 import {
   HomeContentContainer,
   BannerContainer,
@@ -33,6 +34,7 @@ const Home = () => (
           <MdSearch />
         </SearchButton>
       </SearchContainer>
+      <AllVideosSection />
     </HomeContentContainer>
   </>
 )
