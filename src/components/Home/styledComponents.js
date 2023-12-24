@@ -1,11 +1,25 @@
 import styled from 'styled-components'
 
+export const HomePageMainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+export const HomePageResponsiveContainer = styled.div`
+  display: flex;
+  height: 90vh;
+`
+
 export const HomeContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 90%;
-  margin: auto;
+  padding-top: 10px;
+  padding-left: 20px;
+  @media screen and (min-width: 768px) {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-left: 40px;
+  }
 `
 
 export const BannerContainer = styled.div`

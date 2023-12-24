@@ -138,6 +138,7 @@ class VideoItemDetails extends Component {
         const onClickLikeButton = () => {
           if (videoObjectFromLikedVideos === undefined) {
             addVideoToLikedVideosList(videoObject)
+            removeVideoFromDislikedVideosList(id)
           } else {
             removeVideoFromLikedVideosList(id)
           }
@@ -146,6 +147,7 @@ class VideoItemDetails extends Component {
         const onClickDislikeButton = () => {
           if (videoObjectFromDislikedVideos === undefined) {
             addVideoToDislikedVideosList(videoObject)
+            removeVideoFromLikedVideosList(id)
           } else {
             removeVideoFromDislikedVideosList(id)
           }
