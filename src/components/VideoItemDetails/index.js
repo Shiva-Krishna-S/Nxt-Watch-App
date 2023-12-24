@@ -6,15 +6,31 @@ import {formatDistanceToNow} from 'date-fns'
 import {BsDot} from 'react-icons/bs'
 import {BiDislike, BiLike, BiListPlus} from 'react-icons/bi'
 import NxtVideosContext from '../../context/NxtVideosContext'
+import Sidebar from '../Sidebar'
 import Header from '../Header'
 
 import {
+  VideoItemDetailsMainContainer,
+  VideoItemDetailsResponsiveContainer,
+  VideoItemDetailsContentContainer,
+  ResponsiveContainer,
+  ReactPlayerContainer,
+  VideoItemDetailsContainer,
+  VideoTitleText,
+  ViewsAndCountText,
+  ButtonsContainer,
+  ReactionButton,
   InProgressContainer,
   VideoItemFailureView,
   FailureImage,
   FailureHeading,
   FailureMessage,
   RetryButton,
+  ButtonText,
+  Separator,
+  ChannelDetailsContainer,
+  ChannelImage,
+  TextAndButtonsContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -121,11 +137,12 @@ class VideoItemDetails extends Component {
         const savedButtonText =
           videoObjectFromSavedVideos === undefined ? 'Save' : 'Saved'
 
-        const likeButtonText =
-          videoObjectFromLikedVideos === undefined ? 'Like' : 'Liked'
+        const isSavedButtonActive = savedButtonText === 'Saved'
 
-        const dislikeButtonText =
-          videoObjectFromDislikedVideos === undefined ? 'Dislike' : 'Disliked'
+        const isLikeButtonActive = videoObjectFromLikedVideos !== undefined
+
+        const isDislikeButtonActive =
+          videoObjectFromDislikedVideos !== undefined
 
         const onToggleSaveButton = () => {
           if (videoObjectFromSavedVideos === undefined) {
@@ -154,40 +171,61 @@ class VideoItemDetails extends Component {
         }
 
         return (
-          <div>
-            <div className="responsive-container">
-              <ReactPlayer url={videoUrl} width="100%" />
-            </div>
-            <p>{title}</p>
-            <div style={{display: 'flex', alignItems: 'center'}}>
-              <p>{viewCount} views</p>
-              <BsDot />
-              <p>{postedTime}</p>
-            </div>
-            <div>
-              <button type="button" onClick={onClickLikeButton}>
-                <BiLike />
-                {likeButtonText}
-              </button>
-              <button type="button" onClick={onClickDislikeButton}>
-                <BiDislike />
-                {dislikeButtonText}
-              </button>
-              <button type="button" onClick={onToggleSaveButton}>
-                <BiListPlus />
-                {savedButtonText}
-              </button>
-            </div>
-            <hr />
-            <div style={{display: 'flex', alignItems: 'center'}}>
-              <img src={profileImageUrl} alt="channel logo" />
-              <div>
-                <p>{name}</p>
-                <p>{subscriberCount} subscribers</p>
-              </div>
-            </div>
-            <p>{description}</p>
-          </div>
+          <>
+            <ResponsiveContainer>
+              <ReactPlayerContainer>
+                <ReactPlayer url={videoUrl} width="100%" height="100%" />
+              </ReactPlayerContainer>
+
+              <VideoItemDetailsContainer>
+                <VideoTitleText>{title}</VideoTitleText>
+
+                <TextAndButtonsContainer>
+                  <ViewsAndCountText>
+                    {viewCount} views <BsDot /> {postedTime}
+                  </ViewsAndCountText>
+
+                  <ButtonsContainer>
+                    <ReactionButton
+                      type="button"
+                      onClick={onClickLikeButton}
+                      isActive={isLikeButtonActive}
+                    >
+                      <BiLike />
+                      <ButtonText>Like</ButtonText>
+                    </ReactionButton>
+                    <ReactionButton
+                      type="button"
+                      onClick={onClickDislikeButton}
+                      isActive={isDislikeButtonActive}
+                    >
+                      <BiDislike />
+                      <ButtonText>Dislike</ButtonText>
+                    </ReactionButton>
+                    <ReactionButton
+                      type="button"
+                      onClick={onToggleSaveButton}
+                      isActive={isSavedButtonActive}
+                    >
+                      <BiListPlus />
+                      <ButtonText>{savedButtonText}</ButtonText>
+                    </ReactionButton>
+                  </ButtonsContainer>
+                </TextAndButtonsContainer>
+              </VideoItemDetailsContainer>
+              <Separator />
+              <ChannelDetailsContainer>
+                <ChannelImage src={profileImageUrl} alt="channel logo" />
+                <div>
+                  <ViewsAndCountText>{name}</ViewsAndCountText>
+                  <ViewsAndCountText>
+                    {subscriberCount} subscribers
+                  </ViewsAndCountText>
+                </div>
+              </ChannelDetailsContainer>
+              <ViewsAndCountText>{description}</ViewsAndCountText>
+            </ResponsiveContainer>
+          </>
         )
       }}
     </NxtVideosContext.Consumer>
@@ -230,10 +268,15 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <>
+      <VideoItemDetailsMainContainer>
         <Header />
-        {this.renderPageViews()}
-      </>
+        <VideoItemDetailsResponsiveContainer>
+          <Sidebar />
+          <VideoItemDetailsContentContainer>
+            {this.renderPageViews()}
+          </VideoItemDetailsContentContainer>
+        </VideoItemDetailsResponsiveContainer>
+      </VideoItemDetailsMainContainer>
     )
   }
 }

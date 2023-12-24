@@ -32,7 +32,6 @@ const Home = () => (
             <MdClose size={15} />
           </BannerCloseButton>
         </BannerContainer>
-
         <AllVideosSection />
       </HomeContentContainer>
     </HomePageResponsiveContainer>
