@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner'
 import {formatDistanceToNow} from 'date-fns'
 import {BsDot} from 'react-icons/bs'
 import {BiDislike, BiLike, BiListPlus} from 'react-icons/bi'
+import NxtVideosContext from '../../context/NxtVideosContext'
 import Header from '../Header'
 
 import {
@@ -24,7 +25,11 @@ const apiStatusConstants = {
 }
 
 class VideoItemDetails extends Component {
-  state = {videoObject: {}, apiStatus: apiStatusConstants.initial}
+  state = {
+    videoObject: {},
+    apiStatus: apiStatusConstants.initial,
+    isVideoLiked: false,
+  }
 
   componentDidMount() {
     this.getVideoObject()
@@ -70,63 +75,73 @@ class VideoItemDetails extends Component {
     }
   }
 
-  renderSuccessView = () => {
-    const {videoObject} = this.state
-    const {
-      id,
-      name,
-      profileImageUrl,
-      subscriberCount,
-      description,
-      publishedAt,
-      thumbnailUrl,
-      title,
-      viewCount,
-      videoUrl,
-    } = videoObject
-
-    const formattedTime = formatDistanceToNow(new Date(publishedAt))
-    const words = formattedTime.split(' ')
-    const number = words[1]
-    const postedTime = `${number} ${number > 1 ? 'years' : 'year'} ago`
-
-    return (
-      <div>
-        <div className="responsive-container">
-          <ReactPlayer url={videoUrl} width="100%" />
-        </div>
-        <p>{title}</p>
-        <div style={{display: 'flex', alignItems: 'center'}}>
-          <p>{viewCount} views</p>
-          <BsDot />
-          <p>{postedTime}</p>
-        </div>
-        <div style={{display: 'flex', alignItems: 'center'}}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <BiLike />
-            <p>Like</p>
-          </div>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <BiDislike />
-            <p>Disike</p>
-          </div>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <BiListPlus />
-            <p>Save</p>
-          </div>
-        </div>
-        <hr />
-        <div style={{display: 'flex', alignItems: 'center'}}>
-          <img src={profileImageUrl} alt="channel logo" />
-          <div>
-            <p>{name}</p>
-            <p>{subscriberCount} subscribers</p>
-          </div>
-        </div>
-        <p>{description}</p>
-      </div>
-    )
+  onClickLikeButton = () => {
+    this.setState({isVideoLiked: true})
   }
+
+  onClickDislikeButton = () => {
+    this.setState({isVideoLiked: false})
+  }
+
+  renderSuccessView = () => (
+    <NxtVideosContext.Consumer>
+      {value => {
+        const {videoObject, isVideoLiked} = this.state
+        const {
+          name,
+          profileImageUrl,
+          subscriberCount,
+          description,
+          publishedAt,
+          title,
+          viewCount,
+          videoUrl,
+        } = videoObject
+
+        const formattedTime = formatDistanceToNow(new Date(publishedAt))
+        const words = formattedTime.split(' ')
+        const number = words[1]
+        const postedTime = `${number} ${number > 1 ? 'years' : 'year'} ago`
+
+        return (
+          <div>
+            <div className="responsive-container">
+              <ReactPlayer url={videoUrl} width="100%" />
+            </div>
+            <p>{title}</p>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+              <p>{viewCount} views</p>
+              <BsDot />
+              <p>{postedTime}</p>
+            </div>
+            <div>
+              <button type="button" onClick={this.onClickLikeButton}>
+                <BiLike />
+                Like
+              </button>
+              <button type="button" onClick={this.onClickDislikeButton}>
+                <BiDislike />
+                Dislike
+              </button>
+              <button type="button">
+                <BiListPlus />
+                Save
+              </button>
+            </div>
+            <hr />
+            <div style={{display: 'flex', alignItems: 'center'}}>
+              <img src={profileImageUrl} alt="channel logo" />
+              <div>
+                <p>{name}</p>
+                <p>{subscriberCount} subscribers</p>
+              </div>
+            </div>
+            <p>{description}</p>
+          </div>
+        )
+      }}
+    </NxtVideosContext.Consumer>
+  )
 
   renderInProgressView = () => (
     <InProgressContainer data-testid="loader">
