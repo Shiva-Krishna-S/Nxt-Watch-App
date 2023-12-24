@@ -11,21 +11,84 @@ import NxtVideosContext from './context/NxtVideosContext'
 import './App.css'
 
 class App extends Component {
-  state = {savedVideosList: []}
+  state = {savedVideosList: [], likedVideosList: [], dislikedVideosList: []}
 
-  addVideoToSavedVideosList = () => {}
+  addVideoToSavedVideosList = videoObject => {
+    const {savedVideosList} = this.state
+    const isThisVideoAlreadySaved = savedVideosList.find(
+      eachItem => eachItem.id === videoObject.id,
+    )
+    if (!isThisVideoAlreadySaved) {
+      this.setState(prevState => ({
+        savedVideosList: [...prevState.savedVideosList, videoObject],
+      }))
+    }
+  }
 
-  removeVideoFromSavedVideosList = () => {}
+  removeVideoFromSavedVideosList = videoId => {
+    const {savedVideosList} = this.state
+    const updatedVideosList = savedVideosList.filter(
+      eachItem => eachItem.id !== videoId,
+    )
+    this.setState({savedVideosList: updatedVideosList})
+  }
+
+  addVideoToLikedVideosList = videoObject => {
+    const {likedVideosList} = this.state
+    const isThisVideoAlreadySaved = likedVideosList.find(
+      eachItem => eachItem.id === videoObject.id,
+    )
+    if (!isThisVideoAlreadySaved) {
+      this.setState(prevState => ({
+        likedVideosList: [...prevState.likedVideosList, videoObject],
+      }))
+    }
+  }
+
+  removeVideoFromLikedVideosList = videoId => {
+    const {likedVideosList} = this.state
+    const updatedVideosList = likedVideosList.filter(
+      eachItem => eachItem.id !== videoId,
+    )
+    this.setState({likedVideosList: updatedVideosList})
+  }
+
+  addVideoToDislikedVideosList = videoObject => {
+    const {dislikedVideosList} = this.state
+    const isThisVideoAlreadySaved = dislikedVideosList.find(
+      eachItem => eachItem.id === videoObject.id,
+    )
+    if (!isThisVideoAlreadySaved) {
+      this.setState(prevState => ({
+        dislikedVideosList: [...prevState.dislikedVideosList, videoObject],
+      }))
+    }
+  }
+
+  removeVideoFromDislikedVideosList = videoId => {
+    const {dislikedVideosList} = this.state
+    const updatedVideosList = dislikedVideosList.filter(
+      eachItem => eachItem.id !== videoId,
+    )
+    this.setState({dislikedVideosList: updatedVideosList})
+  }
 
   render() {
-    const {savedVideosList} = this.state
+    const {savedVideosList, likedVideosList, dislikedVideosList} = this.state
 
     return (
       <NxtVideosContext.Provider
         value={{
           savedVideosList,
+          likedVideosList,
+          dislikedVideosList,
           addVideoToSavedVideosList: this.addVideoToSavedVideosList,
           removeVideoFromSavedVideosList: this.removeVideoFromSavedVideosList,
+          addVideoToLikedVideosList: this.addVideoToLikedVideosList,
+          removeVideoFromLikedVideosList: this.removeVideoFromLikedVideosList,
+          addVideoToDislikedVideosList: this.addVideoToDislikedVideosList,
+          removeVideoFromDislikedVideosList: this
+            .removeVideoFromDislikedVideosList,
         }}
       >
         <Switch>

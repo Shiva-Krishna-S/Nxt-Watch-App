@@ -17,14 +17,15 @@ import {
 const TrendingVideoCard = props => {
   const {videoDetails} = props
   const {
-    channel,
     id,
     publishedAt,
     thumbnailUrl,
     title,
     viewCount,
+    name,
+    profileImageUrl,
   } = videoDetails
-  const {name, profileImageUrl} = channel
+
   const formattedTime = formatDistanceToNow(new Date(publishedAt))
   const words = formattedTime.split(' ')
   const number = words[1]

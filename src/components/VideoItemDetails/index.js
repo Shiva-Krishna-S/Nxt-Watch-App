@@ -28,7 +28,6 @@ class VideoItemDetails extends Component {
   state = {
     videoObject: {},
     apiStatus: apiStatusConstants.initial,
-    isVideoLiked: false,
   }
 
   componentDidMount() {
@@ -75,19 +74,23 @@ class VideoItemDetails extends Component {
     }
   }
 
-  onClickLikeButton = () => {
-    this.setState({isVideoLiked: true})
-  }
-
-  onClickDislikeButton = () => {
-    this.setState({isVideoLiked: false})
-  }
-
   renderSuccessView = () => (
     <NxtVideosContext.Consumer>
       {value => {
-        const {videoObject, isVideoLiked} = this.state
         const {
+          savedVideosList,
+          likedVideosList,
+          dislikedVideosList,
+          addVideoToSavedVideosList,
+          removeVideoFromSavedVideosList,
+          addVideoToLikedVideosList,
+          removeVideoFromLikedVideosList,
+          addVideoToDislikedVideosList,
+          removeVideoFromDislikedVideosList,
+        } = value
+        const {videoObject} = this.state
+        const {
+          id,
           name,
           profileImageUrl,
           subscriberCount,
@@ -103,6 +106,51 @@ class VideoItemDetails extends Component {
         const number = words[1]
         const postedTime = `${number} ${number > 1 ? 'years' : 'year'} ago`
 
+        const videoObjectFromSavedVideos = savedVideosList.find(
+          eachItem => eachItem.id === id,
+        )
+
+        const videoObjectFromLikedVideos = likedVideosList.find(
+          eachItem => eachItem.id === id,
+        )
+
+        const videoObjectFromDislikedVideos = dislikedVideosList.find(
+          eachItem => eachItem.id === id,
+        )
+
+        const savedButtonText =
+          videoObjectFromSavedVideos === undefined ? 'Save' : 'Saved'
+
+        const likeButtonText =
+          videoObjectFromLikedVideos === undefined ? 'Like' : 'Liked'
+
+        const dislikeButtonText =
+          videoObjectFromDislikedVideos === undefined ? 'Dislike' : 'Disliked'
+
+        const onToggleSaveButton = () => {
+          if (videoObjectFromSavedVideos === undefined) {
+            addVideoToSavedVideosList(videoObject)
+          } else {
+            removeVideoFromSavedVideosList(id)
+          }
+        }
+
+        const onClickLikeButton = () => {
+          if (videoObjectFromLikedVideos === undefined) {
+            addVideoToLikedVideosList(videoObject)
+          } else {
+            removeVideoFromLikedVideosList(id)
+          }
+        }
+
+        const onClickDislikeButton = () => {
+          if (videoObjectFromDislikedVideos === undefined) {
+            addVideoToDislikedVideosList(videoObject)
+          } else {
+            removeVideoFromDislikedVideosList(id)
+          }
+        }
+
         return (
           <div>
             <div className="responsive-container">
@@ -115,17 +163,17 @@ class VideoItemDetails extends Component {
               <p>{postedTime}</p>
             </div>
             <div>
-              <button type="button" onClick={this.onClickLikeButton}>
+              <button type="button" onClick={onClickLikeButton}>
                 <BiLike />
-                Like
+                {likeButtonText}
               </button>
-              <button type="button" onClick={this.onClickDislikeButton}>
+              <button type="button" onClick={onClickDislikeButton}>
                 <BiDislike />
-                Dislike
+                {dislikeButtonText}
               </button>
-              <button type="button">
+              <button type="button" onClick={onToggleSaveButton}>
                 <BiListPlus />
-                Save
+                {savedButtonText}
               </button>
             </div>
             <hr />
