@@ -20,9 +20,13 @@ import {
   ProfileImage,
   LogoutButton,
   NavMenuItemsContainer,
-  MenuItem,
   MenuItemName,
   StyledLink,
+  ContactDetailsContainer,
+  ContactUsText,
+  ContactLogosContainer,
+  ContactLogo,
+  ContactUsMessage,
 } from './styledComponents'
 
 class Header extends Component {
@@ -42,30 +46,42 @@ class Header extends Component {
 
   renderMenuItems = () => (
     <NavMenuItemsContainer>
-      <MenuItem>
-        <StyledLink to="/">
-          <AiFillHome />
-          <MenuItemName>Home</MenuItemName>
-        </StyledLink>
-      </MenuItem>
-      <MenuItem>
-        <StyledLink to="/trending">
-          <HiFire />
-          <MenuItemName>Trending</MenuItemName>
-        </StyledLink>
-      </MenuItem>
-      <MenuItem>
-        <StyledLink to="/gaming">
-          <SiYoutubegaming />
-          <MenuItemName>Gaming</MenuItemName>
-        </StyledLink>
-      </MenuItem>
-      <MenuItem>
-        <StyledLink to="/saved-videos">
-          <BiListPlus />
-          <MenuItemName>Saved Videos</MenuItemName>
-        </StyledLink>
-      </MenuItem>
+      <StyledLink to="/">
+        <AiFillHome />
+        <MenuItemName>Home</MenuItemName>
+      </StyledLink>
+      <StyledLink to="/trending">
+        <HiFire />
+        <MenuItemName>Trending</MenuItemName>
+      </StyledLink>
+      <StyledLink to="/gaming">
+        <SiYoutubegaming />
+        <MenuItemName>Gaming</MenuItemName>
+      </StyledLink>
+      <StyledLink to="/saved-videos">
+        <BiListPlus />
+        <MenuItemName>Saved Videos</MenuItemName>
+      </StyledLink>
+      <ContactDetailsContainer>
+        <ContactUsText>Contact Us</ContactUsText>
+        <ContactLogosContainer>
+          <ContactLogo
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
+            alt="facebook logo"
+          />
+          <ContactLogo
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
+            alt="twitter logo"
+          />
+          <ContactLogo
+            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
+            alt="linked in logo"
+          />
+        </ContactLogosContainer>
+        <ContactUsMessage>
+          Enjoy! Now to see your channels and recommendations!
+        </ContactUsMessage>
+      </ContactDetailsContainer>
     </NavMenuItemsContainer>
   )
 

@@ -6,7 +6,9 @@ export const HomePageMainContainer = styled.div`
 `
 export const HomePageResponsiveContainer = styled.div`
   display: flex;
-  height: 90vh;
+  @media screen and (min-width: 768px) {
+    height: 90vh;
+  }
 `
 
 export const HomeContentContainer = styled.div`
@@ -14,6 +16,7 @@ export const HomeContentContainer = styled.div`
   flex-direction: column;
   padding-top: 10px;
   padding-left: 20px;
+  width: 100%;
   @media screen and (min-width: 768px) {
     flex-grow: 1;
     overflow-y: auto;
@@ -23,13 +26,15 @@ export const HomeContentContainer = styled.div`
 `
 
 export const BannerContainer = styled.div`
-  height: 200px;
+  min-height: 200px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
   padding: 10px;
   @media screen and (min-width: 768px) {
+    height: 300px;
     padding: 25px;
   }
 `
@@ -42,15 +47,36 @@ export const BannerContent = styled.div`
 `
 
 export const NxtWatchLogo = styled.img`
-  width: 150px;
+  width: 170px;
 `
 export const BannerText = styled.p`
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 18px;
 `
 
-export const GetItNowButton = styled.button``
+export const GetItNowButton = styled.button`
+  border: 1px solid black;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-bottom: 8px;
+  padding-right: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`
 
 export const BannerCloseButton = styled.button`
   align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 10px;
 `

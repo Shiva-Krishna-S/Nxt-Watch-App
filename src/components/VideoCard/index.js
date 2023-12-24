@@ -8,9 +8,12 @@ import {
   ChannelImage,
   VideoStatsContainer,
   VideoTitle,
+  StatusDetailsContainer,
   StatusDetails,
   StatText,
   StyledLink,
+  StatDotOne,
+  StatDotTwo,
 } from './styledComponents'
 
 const VideoCard = props => {
@@ -37,17 +40,21 @@ const VideoCard = props => {
           <ChannelImage src={profileImageUrl} alt="channel logo" />
           <VideoStatsContainer>
             <VideoTitle>{title}</VideoTitle>
-            <StatusDetails>
-              <StatText>{name}</StatText>
-              <StatText>
-                <BsDot size="10" />
-              </StatText>
-              <StatText>{viewCount} views</StatText>
-              <StatText>
-                <BsDot size="10" />
-              </StatText>
-              <StatText>{postedTime}</StatText>
-            </StatusDetails>
+            <StatusDetailsContainer>
+              <StatusDetails>
+                <StatText>{name}</StatText>
+                <StatDotOne>
+                  <BsDot size="10" />
+                </StatDotOne>
+              </StatusDetails>
+              <StatusDetails>
+                <StatText>{viewCount} views</StatText>
+                <StatDotTwo>
+                  <BsDot size="10" />
+                </StatDotTwo>
+                <StatText>{postedTime}</StatText>
+              </StatusDetails>
+            </StatusDetailsContainer>
           </VideoStatsContainer>
         </VideoDetailsContainer>
       </StyledLink>

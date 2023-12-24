@@ -60,19 +60,52 @@ export const ProfileImage = styled.img`
 `
 export const LogoutButton = styled.button``
 
-export const NavMenuItemsContainer = styled.ul`
-  padding-left: 0;
-`
-export const MenuItem = styled.li`
-  list-style-type: none;
+export const NavMenuItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 export const MenuItemName = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
   display: flex;
   align-items: center;
+  color: black;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 12px;
+`
+export const ContactDetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+`
+export const ContactUsText = styled.h1`
+  font-family: 'Roboto';
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 12px;
+`
+export const ContactLogosContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+`
+
+export const ContactLogo = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-right: 12px;
+`
+export const ContactUsMessage = styled.p`
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 12px;
 `

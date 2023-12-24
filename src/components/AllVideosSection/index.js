@@ -164,7 +164,7 @@ class AllVideosSection extends Component {
             onKeyDown={this.onSearchInputKeydown}
           />
           <SearchButton onClick={this.onClickSearchIcon}>
-            <MdSearch />
+            <MdSearch size={15} />
           </SearchButton>
         </SearchContainer>
         {this.renderPageViews()}

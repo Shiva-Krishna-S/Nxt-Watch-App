@@ -29,7 +29,7 @@ const Home = () => (
             <GetItNowButton>GET IT NOW</GetItNowButton>
           </BannerContent>
           <BannerCloseButton>
-            <MdClose />
+            <MdClose size={15} />
           </BannerCloseButton>
         </BannerContainer>
 
