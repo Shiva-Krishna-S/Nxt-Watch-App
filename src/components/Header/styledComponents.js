@@ -16,6 +16,9 @@ export const NavContentContainer = styled.div`
     margin: auto;
   }
 `
+export const WebsiteLogoLink = styled(Link)`
+  text-decoration: none;
+`
 export const NavImage = styled.img`
   width: 120px;
   @media screen and (min-width: 768px) {
@@ -32,6 +35,7 @@ export const NavItemButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  outline: none;
   padding: 0;
   margin-left: 15px;
   @media screen and (min-width: 768px) {
@@ -79,9 +83,6 @@ export const LogoutButton = styled.button`
 export const ModalContainerForMenuItems = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
 `
 
 export const NavItemCloseButton = styled.button`
@@ -137,4 +138,5 @@ export const PopupButton = styled.button`
   border: none;
   border-radius: 4px;
   outline: none;
+  cursor: pointer;
 `

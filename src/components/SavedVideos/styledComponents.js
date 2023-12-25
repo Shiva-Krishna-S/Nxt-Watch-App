@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const SavedVideosPageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 export const SavedVideosPageResponsiveContainer = styled.div`
   display: flex;

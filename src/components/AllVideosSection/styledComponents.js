@@ -87,6 +87,8 @@ export const RetryButton = styled.button`
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: pointer;
+  outline: none;
 `
 
 export const NoSearchResultsView = styled.div`
@@ -98,7 +100,7 @@ export const NoSearchResultsView = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   @media screen and (min-width: 768px) {
-    min-height: 90vh;
+    min-height: 70vh;
     padding-top: 50px;
     padding-bottom: 50px;
   }

@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 import TrendingVideoCard from '../TrendingVideoCard'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
-
+import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   InProgressContainer,
   TrendingFailureView,
@@ -75,7 +75,7 @@ class Trending extends Component {
 
     return (
       <TrendingSuccessViewContainer>
-        <TrendingTopSection>
+        <TrendingTopSection data-testid="banner">
           <HiFire />
           <TrendingTitle>Trending</TrendingTitle>
         </TrendingTopSection>
@@ -90,21 +90,25 @@ class Trending extends Component {
 
   renderInProgressView = () => (
     <InProgressContainer data-testid="loader">
-      <Loader type="ThreeDots" color=" #4f46e5" height="50" width="50" />
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
     </InProgressContainer>
   )
+
+  onClickRetry = () => {
+    this.getTrendingVideosData()
+  }
 
   renderFailureView = () => (
     <TrendingFailureView>
       <FailureImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure"
+        alt="failure view"
       />
       <FailureHeading>Oops! Something Went Wrong</FailureHeading>
       <FailureMessage>
         We are having some trouble to complete your request. Please try again.
       </FailureMessage>
-      <RetryButton>Retry</RetryButton>
+      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
     </TrendingFailureView>
   )
 
@@ -125,15 +129,25 @@ class Trending extends Component {
 
   render() {
     return (
-      <TrendingPageMainContainer>
-        <Header />
-        <TrendingPageResponsiveContainer>
-          <Sidebar />
-          <TrendingPageContentContainer>
-            {this.renderPageViews()}
-          </TrendingPageContentContainer>
-        </TrendingPageResponsiveContainer>
-      </TrendingPageMainContainer>
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <TrendingPageMainContainer
+              data-testid="trending"
+              isDarkTheme={isDarkTheme}
+            >
+              <Header />
+              <TrendingPageResponsiveContainer>
+                <Sidebar />
+                <TrendingPageContentContainer>
+                  {this.renderPageViews()}
+                </TrendingPageContentContainer>
+              </TrendingPageResponsiveContainer>
+            </TrendingPageMainContainer>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }

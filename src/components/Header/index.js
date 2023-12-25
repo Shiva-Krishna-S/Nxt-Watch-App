@@ -15,6 +15,7 @@ import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   NavbarContainer,
   NavContentContainer,
+  WebsiteLogoLink,
   NavImage,
   NavItemsMainContainer,
   NavItemsContainerForMediumAndAboveDevices,
@@ -47,13 +48,22 @@ class Header extends Component {
           const onClickThemeButton = () => {
             onChangeTheme()
           }
+          const websiteLogoUrl = isDarkTheme
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
           return (
             <NavbarContainer>
               <NavContentContainer>
-                <NavImage src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
+                <WebsiteLogoLink to="/">
+                  <NavImage src={websiteLogoUrl} alt="website logo" />
+                </WebsiteLogoLink>
+
                 <NavItemsMainContainer>
-                  <NavItemButton onClick={onClickThemeButton}>
+                  <NavItemButton
+                    onClick={onClickThemeButton}
+                    data-testid="theme"
+                  >
                     {isDarkTheme ? <FiSun size={25} /> : <FaMoon size={25} />}
                   </NavItemButton>
 
@@ -136,7 +146,10 @@ class Header extends Component {
 
                   <NavItemsContainerForMediumAndAboveDevices>
                     <NavItemButton>
-                      <ProfileImage src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
+                      <ProfileImage
+                        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
+                        alt="profile"
+                      />
                     </NavItemButton>
 
                     <>

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const VideoItemDetailsMainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
   padding-bottom: 30px;
 `
 export const VideoItemDetailsResponsiveContainer = styled.div`
@@ -68,7 +69,7 @@ export const ReactionButton = styled.button`
   align-items: center;
   margin-right: 12px;
   font-weight: bold;
-  color: ${props => (props.isActive ? 'blue' : 'grey')};
+  color: ${props => (props.isActive ? '#2563eb' : '#64748b')};
 `
 
 export const ButtonText = styled.p`
@@ -140,4 +141,6 @@ export const RetryButton = styled.button`
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: pointer;
+  outline: none;
 `

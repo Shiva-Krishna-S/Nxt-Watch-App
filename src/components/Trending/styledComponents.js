@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const TrendingPageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
 `
 export const TrendingPageResponsiveContainer = styled.div`
   display: flex;
@@ -92,4 +93,6 @@ export const RetryButton = styled.button`
   padding-right: 16px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: pointer;
+  outline: none;
 `

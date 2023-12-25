@@ -233,21 +233,25 @@ class VideoItemDetails extends Component {
 
   renderInProgressView = () => (
     <InProgressContainer data-testid="loader">
-      <Loader type="ThreeDots" color=" #4f46e5" height="50" width="50" />
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
     </InProgressContainer>
   )
+
+  onClickRetry = () => {
+    this.getVideoObject()
+  }
 
   renderFailureView = () => (
     <VideoItemFailureView>
       <FailureImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure"
+        alt="failure view"
       />
       <FailureHeading>Oops! Something Went Wrong</FailureHeading>
       <FailureMessage>
         We are having some trouble to complete your request. Please try again.
       </FailureMessage>
-      <RetryButton>Retry</RetryButton>
+      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
     </VideoItemFailureView>
   )
 
@@ -268,15 +272,26 @@ class VideoItemDetails extends Component {
 
   render() {
     return (
-      <VideoItemDetailsMainContainer>
-        <Header />
-        <VideoItemDetailsResponsiveContainer>
-          <Sidebar />
-          <VideoItemDetailsContentContainer>
-            {this.renderPageViews()}
-          </VideoItemDetailsContentContainer>
-        </VideoItemDetailsResponsiveContainer>
-      </VideoItemDetailsMainContainer>
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+
+          return (
+            <VideoItemDetailsMainContainer
+              data-testid="videoItemDetails"
+              isDarkTheme={isDarkTheme}
+            >
+              <Header />
+              <VideoItemDetailsResponsiveContainer>
+                <Sidebar />
+                <VideoItemDetailsContentContainer>
+                  {this.renderPageViews()}
+                </VideoItemDetailsContentContainer>
+              </VideoItemDetailsResponsiveContainer>
+            </VideoItemDetailsMainContainer>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }

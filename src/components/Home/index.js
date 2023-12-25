@@ -3,6 +3,7 @@ import {MdClose} from 'react-icons/md'
 import Header from '../Header'
 import AllVideosSection from '../AllVideosSection'
 import Sidebar from '../Sidebar'
+import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   HomeContentContainer,
   BannerContainer,
@@ -26,30 +27,44 @@ class Home extends Component {
     const {showBanner} = this.state
 
     return (
-      <HomePageMainContainer>
-        <Header />
-        <HomePageResponsiveContainer>
-          <Sidebar />
-          <HomeContentContainer>
-            {showBanner ? (
-              <BannerContainer>
-                <BannerContent>
-                  <NxtWatchLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-                  <BannerText>
-                    Buy Nxt Watch Premium prepaid plans with UPI
-                  </BannerText>
-                  <GetItNowButton>GET IT NOW</GetItNowButton>
-                </BannerContent>
-                <BannerCloseButton onClick={this.onClickBannerClose}>
-                  <MdClose size={15} />
-                </BannerCloseButton>
-              </BannerContainer>
-            ) : null}
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
 
-            <AllVideosSection />
-          </HomeContentContainer>
-        </HomePageResponsiveContainer>
-      </HomePageMainContainer>
+          return (
+            <HomePageMainContainer data-testid="home" isDarkTheme={isDarkTheme}>
+              <Header />
+              <HomePageResponsiveContainer>
+                <Sidebar />
+                <HomeContentContainer>
+                  {showBanner ? (
+                    <BannerContainer data-testid="banner">
+                      <BannerContent>
+                        <NxtWatchLogo
+                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+                          alt="nxt watch logo"
+                        />
+                        <BannerText>
+                          Buy Nxt Watch Premium prepaid plans with UPI
+                        </BannerText>
+                        <GetItNowButton>GET IT NOW</GetItNowButton>
+                      </BannerContent>
+                      <BannerCloseButton
+                        onClick={this.onClickBannerClose}
+                        data-testid="close"
+                      >
+                        <MdClose size={15} />
+                      </BannerCloseButton>
+                    </BannerContainer>
+                  ) : null}
+
+                  <AllVideosSection />
+                </HomeContentContainer>
+              </HomePageResponsiveContainer>
+            </HomePageMainContainer>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }

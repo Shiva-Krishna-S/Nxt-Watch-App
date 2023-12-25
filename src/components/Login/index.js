@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
+import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   LoginPageContainer,
   LoginFormContainer,
@@ -68,58 +69,71 @@ class Login extends Component {
   }
 
   render() {
-    const {
-      username,
-      password,
-      showPassword,
-      showSubmitError,
-      errorMessage,
-    } = this.state
-
-    const jwtToken = Cookies.get('jwt_token')
-    // console.log(jwtToken)
-    if (jwtToken !== undefined) {
-      return <Redirect to="/" />
-    }
-
     return (
-      <LoginPageContainer>
-        <LoginFormContainer onSubmit={this.onSubmitLoginForm}>
-          <LoginLogo src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png" />
-          <LoginInputContainer>
-            <LoginInputLabel htmlFor="username">USERNAME</LoginInputLabel>
-            <LoginInputElement
-              type="text"
-              placeholder="Username"
-              id="username"
-              onChange={this.onChangeUsername}
-              value={username}
-            />
-          </LoginInputContainer>
-          <LoginInputContainer>
-            <LoginInputLabel htmlFor="password">PASSWORD</LoginInputLabel>
-            <LoginInputElement
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Password"
-              id="password"
-              onChange={this.onChangePassword}
-              value={password}
-            />
-          </LoginInputContainer>
-          <ShowPasswordContainer>
-            <PasswordCheckbox
-              htmlFor="showPassword"
-              type="checkbox"
-              onChange={this.onToggleCheckbox}
-            />
-            <ShowPasswordText id="showPassword">Show Password</ShowPasswordText>
-          </ShowPasswordContainer>
-          <LoginButton>Login</LoginButton>
-          {showSubmitError ? (
-            <ErrorMessageText>*{errorMessage}</ErrorMessageText>
-          ) : null}
-        </LoginFormContainer>
-      </LoginPageContainer>
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          const websiteLogoUrl = isDarkTheme
+            ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+            : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+
+          const {
+            username,
+            password,
+            showPassword,
+            showSubmitError,
+            errorMessage,
+          } = this.state
+
+          const jwtToken = Cookies.get('jwt_token')
+          // console.log(jwtToken)
+          if (jwtToken !== undefined) {
+            return <Redirect to="/" />
+          }
+
+          return (
+            <LoginPageContainer>
+              <LoginFormContainer onSubmit={this.onSubmitLoginForm}>
+                <LoginLogo src={websiteLogoUrl} alt="website logo" />
+                <LoginInputContainer>
+                  <LoginInputLabel htmlFor="username">USERNAME</LoginInputLabel>
+                  <LoginInputElement
+                    type="text"
+                    placeholder="Username"
+                    id="username"
+                    onChange={this.onChangeUsername}
+                    value={username}
+                  />
+                </LoginInputContainer>
+                <LoginInputContainer>
+                  <LoginInputLabel htmlFor="password">PASSWORD</LoginInputLabel>
+                  <LoginInputElement
+                    type={showPassword ? 'text' : 'password'}
+                    placeholder="Password"
+                    id="password"
+                    onChange={this.onChangePassword}
+                    value={password}
+                  />
+                </LoginInputContainer>
+                <ShowPasswordContainer>
+                  <PasswordCheckbox
+                    htmlFor="showPassword"
+                    type="checkbox"
+                    onChange={this.onToggleCheckbox}
+                  />
+                  <ShowPasswordText id="showPassword">
+                    Show Password
+                  </ShowPasswordText>
+                </ShowPasswordContainer>
+                <LoginButton>Login</LoginButton>
+                {showSubmitError ? (
+                  <ErrorMessageText>*{errorMessage}</ErrorMessageText>
+                ) : null}
+              </LoginFormContainer>
+            </LoginPageContainer>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }

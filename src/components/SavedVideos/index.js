@@ -20,7 +20,7 @@ import {
 const SavedVideos = () => (
   <NxtVideosContext.Consumer>
     {value => {
-      const {savedVideosList} = value
+      const {savedVideosList, isDarkTheme} = value
 
       const isSavedVideoListEmpty = savedVideosList.length === 0
 
@@ -42,7 +42,7 @@ const SavedVideos = () => (
 
       const renderSavedVideosView = () => (
         <SavedVideosContainer>
-          <SavedVideosTopSection>
+          <SavedVideosTopSection data-testid="banner">
             <BiListPlus />
             <SavedVideosTitle>Saved Videos</SavedVideosTitle>
           </SavedVideosTopSection>
@@ -55,7 +55,10 @@ const SavedVideos = () => (
       )
 
       return (
-        <SavedVideosPageMainContainer>
+        <SavedVideosPageMainContainer
+          data-testid="savedVideos"
+          isDarkTheme={isDarkTheme}
+        >
           <Header />
           <SavedVideosPageResponsiveContainer>
             <Sidebar />

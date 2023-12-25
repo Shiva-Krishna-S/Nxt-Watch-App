@@ -5,7 +5,7 @@ import Loader from 'react-loader-spinner'
 import GamingVideoCard from '../GamingVideoCard'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
-
+import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   GamingVideosListContainer,
   InProgressContainer,
@@ -75,7 +75,7 @@ class Gaming extends Component {
 
     return (
       <GamingPageContainer>
-        <GamingBannerSection>
+        <GamingBannerSection data-testid="banner">
           <SiYoutubegaming />
           <GamingTitle>Gaming</GamingTitle>
         </GamingBannerSection>
@@ -90,21 +90,25 @@ class Gaming extends Component {
 
   renderInProgressView = () => (
     <InProgressContainer data-testid="loader">
-      <Loader type="ThreeDots" color=" #4f46e5" height="50" width="50" />
+      <Loader type="ThreeDots" color="blue" height="50" width="50" />
     </InProgressContainer>
   )
+
+  onClickRetry = () => {
+    this.getGamingVideosData()
+  }
 
   renderFailureView = () => (
     <GamingVideosFailureView>
       <FailureImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure"
+        alt="failure view"
       />
       <FailureHeading>Oops! Something Went Wrong</FailureHeading>
       <FailureMessage>
         We are having some trouble to complete your request. Please try again.
       </FailureMessage>
-      <RetryButton>Retry</RetryButton>
+      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
     </GamingVideosFailureView>
   )
 
@@ -125,15 +129,25 @@ class Gaming extends Component {
 
   render() {
     return (
-      <GamingPageMainContainer>
-        <Header />
-        <GamingPageResponsiveContainer>
-          <Sidebar />
-          <GamingPageContentContainer>
-            {this.renderPageViews()}
-          </GamingPageContentContainer>
-        </GamingPageResponsiveContainer>
-      </GamingPageMainContainer>
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <GamingPageMainContainer
+              data-testid="gaming"
+              isDarkTheme={isDarkTheme}
+            >
+              <Header />
+              <GamingPageResponsiveContainer>
+                <Sidebar />
+                <GamingPageContentContainer>
+                  {this.renderPageViews()}
+                </GamingPageContentContainer>
+              </GamingPageResponsiveContainer>
+            </GamingPageMainContainer>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }

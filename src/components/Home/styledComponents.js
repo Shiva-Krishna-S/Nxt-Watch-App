@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const HomePageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 export const HomePageResponsiveContainer = styled.div`
   display: flex;
