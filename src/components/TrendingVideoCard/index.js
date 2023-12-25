@@ -3,15 +3,17 @@ import {BsDot} from 'react-icons/bs'
 
 import {
   TrendingVideoCardItem,
+  StyledLink,
   VideoThumbnailImage,
   VideoDetailsContainer,
   ChannelImage,
   VideoStatsContainer,
   VideoTitle,
+  StatusDetailsContainer,
   StatusDetails,
   StatText,
-  VideoStatsContainerSmallDevices,
-  StatsViewCountAndTime,
+  StatDotOne,
+  StatDotTwo,
 } from './styledComponents'
 
 const TrendingVideoCard = props => {
@@ -33,35 +35,30 @@ const TrendingVideoCard = props => {
 
   return (
     <TrendingVideoCardItem>
-      <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-      <VideoDetailsContainer>
-        <ChannelImage src={profileImageUrl} alt="channel logo" />
-        <VideoStatsContainer>
-          <VideoTitle>{title}</VideoTitle>
-          <StatusDetails>
-            <StatText>{name}</StatText>
-            <StatText>
-              <BsDot size="10" />
-            </StatText>
-            <StatText>{viewCount} views</StatText>
-            <StatText>
-              <BsDot size="10" />
-            </StatText>
-            <StatText>{postedTime}</StatText>
-          </StatusDetails>
-        </VideoStatsContainer>
-        <VideoStatsContainerSmallDevices>
-          <VideoTitle>{title}</VideoTitle>
-          <StatText>{name}</StatText>
-          <StatsViewCountAndTime>
-            <StatText>{viewCount} views</StatText>
-            <StatText>
-              <BsDot size="10" />
-            </StatText>
-            <StatText>{postedTime}</StatText>
-          </StatsViewCountAndTime>
-        </VideoStatsContainerSmallDevices>
-      </VideoDetailsContainer>
+      <StyledLink to={`/videos/${id}`}>
+        <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+        <VideoDetailsContainer>
+          <ChannelImage src={profileImageUrl} alt="channel logo" />
+          <VideoStatsContainer>
+            <VideoTitle>{title}</VideoTitle>
+            <StatusDetailsContainer>
+              <StatusDetails>
+                <StatText>{name}</StatText>
+                <StatDotOne>
+                  <BsDot size="10" />
+                </StatDotOne>
+              </StatusDetails>
+              <StatusDetails>
+                <StatText>{viewCount} views</StatText>
+                <StatDotTwo>
+                  <BsDot size="10" />
+                </StatDotTwo>
+                <StatText>{postedTime}</StatText>
+              </StatusDetails>
+            </StatusDetailsContainer>
+          </VideoStatsContainer>
+        </VideoDetailsContainer>
+      </StyledLink>
     </TrendingVideoCardItem>
   )
 }

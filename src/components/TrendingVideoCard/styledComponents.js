@@ -1,21 +1,26 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const TrendingVideoCardItem = styled.li`
   list-style-type: none;
   width: 100%;
+  margin-bottom: 15px;
+`
+export const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
+  text-decoration: none;
+  @media screen and (min-width: 576px) {
     flex-direction: row;
   }
-  @media screen and (min-width: 768px) {
-    width: 33%;
-  }
 `
+
 export const VideoThumbnailImage = styled.img`
   width: 100%;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
+  @media screen and (min-width: 576px) {
     width: 50%;
+    max-width: 400px;
+    max-height: 250px;
   }
 `
 export const VideoDetailsContainer = styled.div`
@@ -24,42 +29,54 @@ export const VideoDetailsContainer = styled.div`
 export const ChannelImage = styled.img`
   height: 40px;
   width: 40px;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
+  flex-shrink: 0;
+  margin-top: 18px;
+  margin-right: 8px;
+  @media screen and (min-width: 576px) {
     display: none;
   }
 `
 export const VideoStatsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
-    display: none;
+  @media screen and (min-width: 576px) {
+    padding: 10px;
+    margin-top: 0;
   }
 `
-export const VideoStatsContainerSmallDevices = styled.div`
-  display: none;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
-    display: flex;
-    flex-direction: column;
-  }
-`
+
 export const VideoTitle = styled.p`
   font-family: 'Roboto';
   font-size: 16px;
+  margin-bottom: 0;
 `
+export const StatusDetailsContainer = styled.div`
+  display: flex;
+  margin-top: 0;
+  @media screen and (min-width: 576px) {
+    flex-direction: column;
+  }
+`
+
 export const StatusDetails = styled.div`
   display: flex;
   align-items: center;
-  @media screen and (min-width: 576px) and (max-width: 767px) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  margin: 0;
 `
 export const StatText = styled.p`
   font-family: 'Roboto';
   font-size: 12px;
+  margin-bottom: 0;
   margin-right: 10px;
 `
-export const StatsViewCountAndTime = styled.div`
+export const StatDotOne = styled.div`
   display: flex;
-  align-items: center;
+  margin-right: 10px;
+  @media screen and (min-width: 576px) {
+    display: none;
+  }
+`
+export const StatDotTwo = styled.div`
+  display: flex;
+  margin-right: 10px;
 `

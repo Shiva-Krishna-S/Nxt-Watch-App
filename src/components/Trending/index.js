@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import TrendingVideoCard from '../TrendingVideoCard'
 import Header from '../Header'
+import Sidebar from '../Sidebar'
 
 import {
   InProgressContainer,
@@ -13,9 +14,12 @@ import {
   FailureMessage,
   RetryButton,
   TrendingItemsList,
-  TrendingPageContainer,
-  TrendingBannerSection,
+  TrendingSuccessViewContainer,
+  TrendingTopSection,
   TrendingTitle,
+  TrendingPageMainContainer,
+  TrendingPageResponsiveContainer,
+  TrendingPageContentContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -70,17 +74,17 @@ class Trending extends Component {
     const {trendingVideosList} = this.state
 
     return (
-      <TrendingPageContainer>
-        <TrendingBannerSection>
+      <TrendingSuccessViewContainer>
+        <TrendingTopSection>
           <HiFire />
           <TrendingTitle>Trending</TrendingTitle>
-        </TrendingBannerSection>
+        </TrendingTopSection>
         <TrendingItemsList>
           {trendingVideosList.map(eachVideo => (
             <TrendingVideoCard key={eachVideo.id} videoDetails={eachVideo} />
           ))}
         </TrendingItemsList>
-      </TrendingPageContainer>
+      </TrendingSuccessViewContainer>
     )
   }
 
@@ -121,10 +125,15 @@ class Trending extends Component {
 
   render() {
     return (
-      <>
+      <TrendingPageMainContainer>
         <Header />
-        {this.renderPageViews()}
-      </>
+        <TrendingPageResponsiveContainer>
+          <Sidebar />
+          <TrendingPageContentContainer>
+            {this.renderPageViews()}
+          </TrendingPageContentContainer>
+        </TrendingPageResponsiveContainer>
+      </TrendingPageMainContainer>
     )
   }
 }

@@ -95,17 +95,28 @@ export const InProgressContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
+  min-height: 50vh;
+  @media screen and (min-width: 768px) {
+    min-height: 90vh;
+  }
 `
 export const VideoItemFailureView = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 65vh;
+  padding-top: 30px;
+  @media screen and (min-width: 768px) {
+    min-height: 90vh;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 `
 export const FailureImage = styled.img`
   width: 50%;
-  max-width: 650px;
+  max-width: 450px;
+  max-height: 350px;
 `
 export const FailureHeading = styled.h1`
   font-family: 'Roboto';
@@ -117,4 +128,16 @@ export const FailureMessage = styled.p`
   font-size: 18px;
   text-align: center;
 `
-export const RetryButton = styled.button``
+export const RetryButton = styled.button`
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: bold;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+`

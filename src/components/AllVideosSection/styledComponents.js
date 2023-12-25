@@ -36,7 +36,6 @@ export const AllVideosListContainer = styled.ul`
   padding-left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap;
 `
 export const InProgressContainer = styled.div`
