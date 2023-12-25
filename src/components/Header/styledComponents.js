@@ -76,18 +76,28 @@ export const LogoutButton = styled.button`
   margin-left: 35px;
 `
 
-export const NavMenuItemsContainer = styled.div`
+export const ModalContainerForMenuItems = styled.div`
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
-export const MenuItemName = styled.p`
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: 500;
-  margin-left: 10px;
+
+export const NavItemCloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 15px;
+  align-self: flex-end;
+`
+
+export const NavMenuItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
@@ -98,33 +108,33 @@ export const StyledLink = styled(Link)`
   padding-bottom: 2px;
   padding-left: 12px;
 `
-export const ContactDetailsContainer = styled.div`
+export const MenuItemName = styled.p`
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 10px;
+`
+export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
-`
-export const ContactUsText = styled.h1`
-  font-family: 'Roboto';
-  font-size: 18px;
-  font-weight: 500;
-  padding-left: 12px;
-`
-export const ContactLogosContainer = styled.div`
-  display: flex;
+  justify-content: center;
   align-items: center;
-  padding-left: 12px;
-  margin-top: 15px;
-  margin-bottom: 15px;
 `
-
-export const ContactLogo = styled.img`
-  height: 30px;
-  width: 30px;
-  margin-right: 12px;
-`
-export const ContactUsMessage = styled.p`
-  font-family: 'Roboto';
+export const PopupMessageText = styled.p`
   font-size: 16px;
-  font-weight: 500;
-  padding-left: 12px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  text-align: center;
+`
+export const PopupButton = styled.button`
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: white;
+  padding: 8px 15px 8px 15px;
+  margin: 8px;
+  background-color: blue;
+  border: none;
+  border-radius: 4px;
+  outline: none;
 `

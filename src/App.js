@@ -1,4 +1,4 @@
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
 import Login from './components/Login'
 import Home from './components/Home'
@@ -8,6 +8,7 @@ import Gaming from './components/Gaming'
 import SavedVideos from './components/SavedVideos'
 import ProtectedRoute from './components/ProtectedRoute'
 import NxtVideosContext from './context/NxtVideosContext'
+import NotFound from './components/NotFound'
 import './App.css'
 
 class App extends Component {
@@ -118,6 +119,8 @@ class App extends Component {
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
           <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+          <Route path="/not-found" component={NotFound} />
+          <Redirect to="not-found" />
         </Switch>
       </NxtVideosContext.Provider>
     )

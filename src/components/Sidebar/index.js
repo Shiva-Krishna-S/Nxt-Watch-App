@@ -18,19 +18,19 @@ import {
 const Sidebar = () => (
   <SidebarContainer>
     <OptionsContainer>
-      <OptionContainer>
+      <OptionContainer to="/">
         <AiFillHome />
         <OptionText>Home</OptionText>
       </OptionContainer>
-      <OptionContainer>
+      <OptionContainer to="/trending">
         <HiFire />
         <OptionText>Trending</OptionText>
       </OptionContainer>
-      <OptionContainer>
+      <OptionContainer to="/gaming">
         <SiYoutubegaming />
         <OptionText>Gaming</OptionText>
       </OptionContainer>
-      <OptionContainer>
+      <OptionContainer to="/saved-videos">
         <BiListPlus />
         <OptionText>Saved Videos</OptionText>
       </OptionContainer>

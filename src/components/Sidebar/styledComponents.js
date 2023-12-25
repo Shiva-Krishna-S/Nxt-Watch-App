@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const SidebarContainer = styled.div`
   display: flex;
@@ -13,12 +14,13 @@ export const SidebarContainer = styled.div`
 export const OptionsContainer = styled.div`
   flex-grow: 1;
 `
-export const OptionContainer = styled.div`
+export const OptionContainer = styled(Link)`
   display: flex;
   align-items: center;
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 12px;
+  text-decoration: none;
 `
 export const OptionText = styled.p`
   font-family: 'Roboto';

@@ -8,7 +8,9 @@ import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
 import {BiListPlus} from 'react-icons/bi'
-
+import {IoMdClose} from 'react-icons/io'
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
 import NxtVideosContext from '../../context/NxtVideosContext'
 import {
   NavbarContainer,
@@ -23,71 +25,21 @@ import {
   NavMenuItemsContainer,
   MenuItemName,
   StyledLink,
-  ContactDetailsContainer,
-  ContactUsText,
-  ContactLogosContainer,
-  ContactLogo,
-  ContactUsMessage,
+  PopupButton,
+  PopupMessageText,
+  ModalContainer,
+  NavItemCloseButton,
+  ModalContainerForMenuItems,
 } from './styledComponents'
 
 class Header extends Component {
-  state = {showMenuItems: false}
-
   onClickLogout = () => {
     const {history} = this.props
     Cookies.remove('jwt_token')
     history.replace('/login')
   }
 
-  onClickMenu = () => {
-    this.setState(prevState => ({
-      showMenuItems: !prevState.showMenuItems,
-    }))
-  }
-
-  renderMenuItems = () => (
-    <NavMenuItemsContainer>
-      <StyledLink to="/">
-        <AiFillHome />
-        <MenuItemName>Home</MenuItemName>
-      </StyledLink>
-      <StyledLink to="/trending">
-        <HiFire />
-        <MenuItemName>Trending</MenuItemName>
-      </StyledLink>
-      <StyledLink to="/gaming">
-        <SiYoutubegaming />
-        <MenuItemName>Gaming</MenuItemName>
-      </StyledLink>
-      <StyledLink to="/saved-videos">
-        <BiListPlus />
-        <MenuItemName>Saved Videos</MenuItemName>
-      </StyledLink>
-      <ContactDetailsContainer>
-        <ContactUsText>Contact Us</ContactUsText>
-        <ContactLogosContainer>
-          <ContactLogo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-            alt="facebook logo"
-          />
-          <ContactLogo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-            alt="twitter logo"
-          />
-          <ContactLogo
-            src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-            alt="linked in logo"
-          />
-        </ContactLogosContainer>
-        <ContactUsMessage>
-          Enjoy! Now to see your channels and recommendations!
-        </ContactUsMessage>
-      </ContactDetailsContainer>
-    </NavMenuItemsContainer>
-  )
-
   render() {
-    const {showMenuItems} = this.state
     return (
       <NxtVideosContext.Consumer>
         {value => {
@@ -106,26 +58,120 @@ class Header extends Component {
                   </NavItemButton>
 
                   <NavItemsContainer>
-                    <NavItemButton onClick={this.onClickMenu}>
-                      <GiHamburgerMenu size={25} />
-                    </NavItemButton>
+                    <>
+                      <Popup
+                        modal
+                        trigger={
+                          <NavItemButton>
+                            <GiHamburgerMenu size={25} />
+                          </NavItemButton>
+                        }
+                      >
+                        {close => (
+                          <ModalContainerForMenuItems>
+                            <NavItemCloseButton
+                              type="button"
+                              onClick={() => close()}
+                            >
+                              <IoMdClose size={20} color="#231f20" />
+                            </NavItemCloseButton>
+                            <NavMenuItemsContainer>
+                              <StyledLink to="/">
+                                <AiFillHome />
+                                <MenuItemName>Home</MenuItemName>
+                              </StyledLink>
+                              <StyledLink to="/trending">
+                                <HiFire />
+                                <MenuItemName>Trending</MenuItemName>
+                              </StyledLink>
+                              <StyledLink to="/gaming">
+                                <SiYoutubegaming />
+                                <MenuItemName>Gaming</MenuItemName>
+                              </StyledLink>
+                              <StyledLink to="/saved-videos">
+                                <BiListPlus />
+                                <MenuItemName>Saved Videos</MenuItemName>
+                              </StyledLink>
+                            </NavMenuItemsContainer>
+                          </ModalContainerForMenuItems>
+                        )}
+                      </Popup>
+                    </>
 
-                    <NavItemButton onClick={this.onClickLogout}>
-                      <FiLogOut size={25} />
-                    </NavItemButton>
+                    <>
+                      <Popup
+                        modal
+                        trigger={
+                          <NavItemButton>
+                            <FiLogOut size={25} />
+                          </NavItemButton>
+                        }
+                      >
+                        {close => (
+                          <ModalContainer>
+                            <div>
+                              <PopupMessageText>
+                                Are you sure you want to logout?
+                              </PopupMessageText>
+                            </div>
+                            <div>
+                              <PopupButton
+                                type="button"
+                                onClick={() => close()}
+                              >
+                                Cancel
+                              </PopupButton>
+                              <PopupButton
+                                type="button"
+                                onClick={this.onClickLogout}
+                              >
+                                Confirm
+                              </PopupButton>
+                            </div>
+                          </ModalContainer>
+                        )}
+                      </Popup>
+                    </>
                   </NavItemsContainer>
 
                   <NavItemsContainerForMediumAndAboveDevices>
                     <NavItemButton>
                       <ProfileImage src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png" />
                     </NavItemButton>
-                    <LogoutButton onClick={this.onClickLogout}>
-                      Logout
-                    </LogoutButton>
+
+                    <>
+                      <Popup
+                        modal
+                        trigger={<LogoutButton>Logout</LogoutButton>}
+                      >
+                        {close => (
+                          <ModalContainer>
+                            <div>
+                              <PopupMessageText>
+                                Are you sure you want to logout?
+                              </PopupMessageText>
+                            </div>
+                            <div>
+                              <PopupButton
+                                type="button"
+                                onClick={() => close()}
+                              >
+                                Cancel
+                              </PopupButton>
+                              <PopupButton
+                                type="button"
+                                onClick={this.onClickLogout}
+                              >
+                                Confirm
+                              </PopupButton>
+                            </div>
+                          </ModalContainer>
+                        )}
+                      </Popup>
+                    </>
                   </NavItemsContainerForMediumAndAboveDevices>
                 </NavItemsMainContainer>
               </NavContentContainer>
-              {showMenuItems ? this.renderMenuItems() : null}
             </NavbarContainer>
           )
         }}
