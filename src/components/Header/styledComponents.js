@@ -12,45 +12,45 @@ export const NavContentContainer = styled.div`
   align-items: center;
   padding: 10px;
   @media screen and (min-width: 768px) {
-    width: 80%;
+    width: 90%;
+    margin: auto;
   }
 `
 export const NavImage = styled.img`
   width: 120px;
+  @media screen and (min-width: 768px) {
+    width: 140px;
+  }
 `
 export const NavItemsMainContainer = styled.div`
   display: flex;
+  align-items: center;
 `
 
-export const NavItemsContainer = styled.ul`
-  padding: 0;
-  display: flex;
-  align-items: center;
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-`
-export const NavItemsContainerForMediumAndAboveDevices = styled.ul`
-  padding: 0;
-  display: flex;
-  align-items: center;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`
-export const NavItem = styled.li`
-  list-style-type: none;
-  margin-left: 20px;
-  @media screen and (min-width: 768px) {
-    margin-left: 40px;
-  }
-`
 export const NavItemButton = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 0;
+  margin-left: 15px;
+  @media screen and (min-width: 768px) {
+    margin-left: 35px;
+  }
+`
+export const NavItemsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+export const NavItemsContainerForMediumAndAboveDevices = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `
 export const ProfileImage = styled.img`
   width: 30px;
@@ -58,11 +58,30 @@ export const ProfileImage = styled.img`
     display: none;
   }
 `
-export const LogoutButton = styled.button``
+
+export const LogoutButton = styled.button`
+  background-color: transparent;
+  border: 1px solid blue;
+  border-radius: 4px;
+  color: blue;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-left: 12px;
+  padding-bottom: 5px;
+  padding-right: 12px;
+  margin-left: 35px;
+`
 
 export const NavMenuItemsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `
 export const MenuItemName = styled.p`
   font-family: 'Roboto';

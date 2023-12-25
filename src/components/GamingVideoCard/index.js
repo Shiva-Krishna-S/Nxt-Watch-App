@@ -4,6 +4,7 @@ import {
   VideoDetailsContainer,
   VideoTitle,
   StatText,
+  StyledLink,
 } from './styledComponents'
 
 const GamingVideoCard = props => {
@@ -12,11 +13,13 @@ const GamingVideoCard = props => {
 
   return (
     <VideoCardItem>
-      <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-      <VideoDetailsContainer>
-        <VideoTitle>{title}</VideoTitle>
-        <StatText>{viewCount} Watching Worldwide</StatText>
-      </VideoDetailsContainer>
+      <StyledLink to={`/videos/${id}`}>
+        <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+        <VideoDetailsContainer>
+          <VideoTitle>{title}</VideoTitle>
+          <StatText>{viewCount} Watching Worldwide</StatText>
+        </VideoDetailsContainer>
+      </StyledLink>
     </VideoCardItem>
   )
 }

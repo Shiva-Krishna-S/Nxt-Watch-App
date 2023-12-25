@@ -4,6 +4,7 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import GamingVideoCard from '../GamingVideoCard'
 import Header from '../Header'
+import Sidebar from '../Sidebar'
 
 import {
   GamingVideosListContainer,
@@ -16,6 +17,9 @@ import {
   GamingPageContainer,
   GamingBannerSection,
   GamingTitle,
+  GamingPageMainContainer,
+  GamingPageResponsiveContainer,
+  GamingPageContentContainer,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -121,10 +125,15 @@ class Gaming extends Component {
 
   render() {
     return (
-      <>
+      <GamingPageMainContainer>
         <Header />
-        {this.renderPageViews()}
-      </>
+        <GamingPageResponsiveContainer>
+          <Sidebar />
+          <GamingPageContentContainer>
+            {this.renderPageViews()}
+          </GamingPageContentContainer>
+        </GamingPageResponsiveContainer>
+      </GamingPageMainContainer>
     )
   }
 }

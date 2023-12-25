@@ -11,7 +11,16 @@ import NxtVideosContext from './context/NxtVideosContext'
 import './App.css'
 
 class App extends Component {
-  state = {savedVideosList: [], likedVideosList: [], dislikedVideosList: []}
+  state = {
+    savedVideosList: [],
+    likedVideosList: [],
+    dislikedVideosList: [],
+    isDarkTheme: false,
+  }
+
+  onChangeTheme = () => {
+    this.setState(prevState => ({isDarkTheme: !prevState.isDarkTheme}))
+  }
 
   addVideoToSavedVideosList = videoObject => {
     const {savedVideosList} = this.state
@@ -74,7 +83,12 @@ class App extends Component {
   }
 
   render() {
-    const {savedVideosList, likedVideosList, dislikedVideosList} = this.state
+    const {
+      savedVideosList,
+      likedVideosList,
+      dislikedVideosList,
+      isDarkTheme,
+    } = this.state
 
     return (
       <NxtVideosContext.Provider
@@ -82,6 +96,7 @@ class App extends Component {
           savedVideosList,
           likedVideosList,
           dislikedVideosList,
+          isDarkTheme,
           addVideoToSavedVideosList: this.addVideoToSavedVideosList,
           removeVideoFromSavedVideosList: this.removeVideoFromSavedVideosList,
           addVideoToLikedVideosList: this.addVideoToLikedVideosList,
@@ -89,6 +104,7 @@ class App extends Component {
           addVideoToDislikedVideosList: this.addVideoToDislikedVideosList,
           removeVideoFromDislikedVideosList: this
             .removeVideoFromDislikedVideosList,
+          onChangeTheme: this.onChangeTheme,
         }}
       >
         <Switch>
