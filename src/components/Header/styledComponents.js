@@ -87,6 +87,7 @@ export const LogoutButton = styled.button`
 export const ModalContainerForMenuItems = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 
 export const NavItemCloseButton = styled.button`
@@ -106,18 +107,24 @@ export const NavMenuItemsContainer = styled.div`
 `
 export const StyledLink = styled(Link)`
   text-decoration: none;
+`
+export const MenuItem = styled.div`
   display: flex;
   align-items: center;
   color: black;
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 12px;
+  background-color: ${props => props.bgColor};
 `
+
 export const MenuItemName = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: 500;
   margin-left: 10px;
+  font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#475569')};
 `
 export const ModalContainer = styled.div`
   display: flex;

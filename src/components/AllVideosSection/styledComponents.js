@@ -2,17 +2,17 @@ import styled from 'styled-components'
 
 export const SearchContainer = styled.div`
   display: flex;
-  margin-top: 10px;
-  margin-right: 20px;
+  margin: 10px;
   border: 1px solid lightgrey;
-
   max-width: 500px;
+  @media screen and (min-width: 576px) {
+    margin: 15px;
+  }
   @media screen and (min-width: 768px) {
-    margin-top: 20px;
+    margin: 20px;
   }
 `
 export const SearchInput = styled.input`
-  color: #0f172a;
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: 500;
@@ -23,6 +23,8 @@ export const SearchInput = styled.input`
   padding-bottom: 8px;
   padding-right: 16px;
   flex-grow: 1;
+  background-color: transparent;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#909090')};
 `
 export const SearchButton = styled.button`
   cursor: pointer;
@@ -30,6 +32,7 @@ export const SearchButton = styled.button`
   border-left: 1px solid lightgrey;
   height: 100%;
   width: 50px;
+  background-color: ${props => (props.isDarkTheme ? '#383838' : '#cccccc')};
 `
 
 export const AllVideosListContainer = styled.ul`
@@ -37,44 +40,23 @@ export const AllVideosListContainer = styled.ul`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  @media screen and (min-width: 576px) {
+    margin: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 20px;
+  }
 `
 export const InProgressContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh;
-  @media screen and (min-width: 768px) {
-    min-height: 90vh;
-  }
-`
-export const AllVideosFailureView = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   min-height: 65vh;
-  padding-top: 30px;
   @media screen and (min-width: 768px) {
-    min-height: 90vh;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    min-height: 85vh;
   }
 `
-export const FailureImage = styled.img`
-  width: 50%;
-  max-width: 450px;
-  max-height: 350px;
-`
-export const FailureHeading = styled.h1`
-  font-family: 'Roboto';
-  font-size: 21px;
-  text-align: center;
-`
-export const FailureMessage = styled.p`
-  font-family: 'Roboto';
-  font-size: 18px;
-  text-align: center;
-`
+
 export const RetryButton = styled.button`
   background-color: #4f46e5;
   color: #ffffff;
@@ -100,7 +82,7 @@ export const NoSearchResultsView = styled.div`
   padding-top: 30px;
   padding-bottom: 30px;
   @media screen and (min-width: 768px) {
-    min-height: 70vh;
+    min-height: 85vh;
     padding-top: 50px;
     padding-bottom: 50px;
   }
@@ -109,14 +91,17 @@ export const NoSearchResultsImage = styled.img`
   width: 50%;
   max-width: 450px;
   max-height: 350px;
+  margin: 20px;
 `
 export const NoSearchResultsHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 21px;
   text-align: center;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 export const NoSearchResultsMessage = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
   text-align: center;
+  color: ${props => (props.isDarkTheme ? '#64748b' : '#475569')};
 `

@@ -1,18 +1,18 @@
 import {Component} from 'react'
 import {HiFire} from 'react-icons/hi'
+
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+
 import TrendingVideoCard from '../TrendingVideoCard'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
+import FailureView from '../FailureView'
+
 import NxtVideosContext from '../../context/NxtVideosContext'
+
 import {
   InProgressContainer,
-  TrendingFailureView,
-  FailureImage,
-  FailureHeading,
-  FailureMessage,
-  RetryButton,
   TrendingItemsList,
   TrendingSuccessViewContainer,
   TrendingTopSection,
@@ -98,19 +98,7 @@ class Trending extends Component {
     this.getTrendingVideosData()
   }
 
-  renderFailureView = () => (
-    <TrendingFailureView>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailureMessage>
-        We are having some trouble to complete your request. Please try again.
-      </FailureMessage>
-      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
-    </TrendingFailureView>
-  )
+  renderFailureView = () => <FailureView onClickRetry={this.onClickRetry} />
 
   renderPageViews = () => {
     const {apiStatus} = this.state

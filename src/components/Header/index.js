@@ -34,21 +34,42 @@ import {
   ModalContainer,
   NavItemCloseButton,
   ModalContainerForMenuItems,
+  MenuItem,
 } from './styledComponents'
 
 const Header = props => (
   <NxtVideosContext.Consumer>
     {value => {
-      const {isDarkTheme, onChangeTheme} = value
+      const {isDarkTheme, activeTab, onChangeTab, onChangeTheme} = value
 
       const onClickLogout = () => {
         const {history} = props
         Cookies.remove('jwt_token')
         history.replace('/login')
       }
+
+      const changeToHome = () => {
+        onChangeTab('Home')
+      }
+
+      const changeToGaming = () => {
+        onChangeTab('Gaming')
+      }
+
+      const changeToTrending = () => {
+        onChangeTab('Trending')
+      }
+
+      const changeToSavedVideos = () => {
+        onChangeTab('Saved Videos')
+      }
+
       const onClickThemeButton = () => {
         onChangeTheme()
       }
+
+      const activeTabBgColor = isDarkTheme ? '#383838' : '#f1f5f9'
+
       const websiteLogoUrl = isDarkTheme
         ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
@@ -82,29 +103,108 @@ const Header = props => (
                     }
                   >
                     {close => (
-                      <ModalContainerForMenuItems>
+                      <ModalContainerForMenuItems isDarkTheme={isDarkTheme}>
                         <NavItemCloseButton
                           type="button"
                           onClick={() => close()}
                         >
-                          <IoMdClose size={20} color="#231f20" />
+                          <IoMdClose
+                            size={20}
+                            color={isDarkTheme ? '#ffffff' : '#231f20'}
+                          />
                         </NavItemCloseButton>
                         <NavMenuItemsContainer>
                           <StyledLink to="/">
-                            <AiFillHome />
-                            <MenuItemName>Home</MenuItemName>
+                            <MenuItem
+                              onClick={changeToHome}
+                              bgColor={
+                                activeTab === 'Home' ? activeTabBgColor : null
+                              }
+                            >
+                              <AiFillHome
+                                color={
+                                  activeTab === 'Home' ? '#ff0000' : '#475569'
+                                }
+                                size={17}
+                              />
+                              <MenuItemName
+                                isDarkTheme={isDarkTheme}
+                                isActive={activeTab === 'Home'}
+                              >
+                                Home
+                              </MenuItemName>
+                            </MenuItem>
                           </StyledLink>
                           <StyledLink to="/trending">
-                            <HiFire />
-                            <MenuItemName>Trending</MenuItemName>
+                            <MenuItem
+                              onClick={changeToTrending}
+                              bgColor={
+                                activeTab === 'Trending'
+                                  ? activeTabBgColor
+                                  : null
+                              }
+                            >
+                              <HiFire
+                                color={
+                                  activeTab === 'Trending'
+                                    ? '#ff0000'
+                                    : '#475569'
+                                }
+                                size={17}
+                              />
+                              <MenuItemName
+                                isDarkTheme={isDarkTheme}
+                                isActive={activeTab === 'Trending'}
+                              >
+                                Trending
+                              </MenuItemName>
+                            </MenuItem>
                           </StyledLink>
                           <StyledLink to="/gaming">
-                            <SiYoutubegaming />
-                            <MenuItemName>Gaming</MenuItemName>
+                            <MenuItem
+                              onClick={changeToGaming}
+                              bgColor={
+                                activeTab === 'Gaming' ? activeTabBgColor : null
+                              }
+                            >
+                              <SiYoutubegaming
+                                color={
+                                  activeTab === 'Gaming' ? '#ff0000' : '#475569'
+                                }
+                                size={17}
+                              />
+                              <MenuItemName
+                                isDarkTheme={isDarkTheme}
+                                isActive={activeTab === 'Gaming'}
+                              >
+                                Gaming
+                              </MenuItemName>
+                            </MenuItem>
                           </StyledLink>
                           <StyledLink to="/saved-videos">
-                            <BiListPlus />
-                            <MenuItemName>Saved Videos</MenuItemName>
+                            <MenuItem
+                              onClick={changeToSavedVideos}
+                              bgColor={
+                                activeTab === 'Saved Videos'
+                                  ? activeTabBgColor
+                                  : null
+                              }
+                            >
+                              <BiListPlus
+                                color={
+                                  activeTab === 'Saved Videos'
+                                    ? '#ff0000'
+                                    : '#475569'
+                                }
+                                size={17}
+                              />
+                              <MenuItemName
+                                isDarkTheme={isDarkTheme}
+                                isActive={activeTab === 'Saved Videos'}
+                              >
+                                Saved Videos
+                              </MenuItemName>
+                            </MenuItem>
                           </StyledLink>
                         </NavMenuItemsContainer>
                       </ModalContainerForMenuItems>

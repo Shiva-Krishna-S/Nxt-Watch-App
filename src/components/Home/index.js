@@ -23,6 +23,22 @@ class Home extends Component {
     this.setState(prevState => ({showBanner: !prevState.showBanner}))
   }
 
+  renderBanner = () => (
+    <BannerContainer data-testid="banner">
+      <BannerContent>
+        <NxtWatchLogo
+          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+          alt="nxt watch logo"
+        />
+        <BannerText>Buy Nxt Watch Premium prepaid plans with UPI</BannerText>
+        <GetItNowButton>GET IT NOW</GetItNowButton>
+      </BannerContent>
+      <BannerCloseButton onClick={this.onClickBannerClose} data-testid="close">
+        <MdClose size={15} />
+      </BannerCloseButton>
+    </BannerContainer>
+  )
+
   render() {
     const {showBanner} = this.state
 
@@ -37,27 +53,7 @@ class Home extends Component {
               <HomePageResponsiveContainer>
                 <Sidebar />
                 <HomeContentContainer isDarkTheme={isDarkTheme}>
-                  {showBanner ? (
-                    <BannerContainer data-testid="banner">
-                      <BannerContent>
-                        <NxtWatchLogo
-                          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                          alt="nxt watch logo"
-                        />
-                        <BannerText>
-                          Buy Nxt Watch Premium prepaid plans with UPI
-                        </BannerText>
-                        <GetItNowButton>GET IT NOW</GetItNowButton>
-                      </BannerContent>
-                      <BannerCloseButton
-                        onClick={this.onClickBannerClose}
-                        data-testid="close"
-                      >
-                        <MdClose size={15} />
-                      </BannerCloseButton>
-                    </BannerContainer>
-                  ) : null}
-
+                  {showBanner && this.renderBanner()}
                   <AllVideosSection />
                 </HomeContentContainer>
               </HomePageResponsiveContainer>

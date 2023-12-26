@@ -1,13 +1,17 @@
 import {Component} from 'react'
-import ReactPlayer from 'react-player'
-import Cookies from 'js-cookie'
-import Loader from 'react-loader-spinner'
 import {formatDistanceToNow} from 'date-fns'
 import {BsDot} from 'react-icons/bs'
 import {BiDislike, BiLike, BiListPlus} from 'react-icons/bi'
-import NxtVideosContext from '../../context/NxtVideosContext'
+
+import ReactPlayer from 'react-player'
+import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
+
 import Sidebar from '../Sidebar'
 import Header from '../Header'
+import FailureView from '../FailureView'
+
+import NxtVideosContext from '../../context/NxtVideosContext'
 
 import {
   VideoItemDetailsMainContainer,
@@ -21,11 +25,6 @@ import {
   ButtonsContainer,
   ReactionButton,
   InProgressContainer,
-  VideoItemFailureView,
-  FailureImage,
-  FailureHeading,
-  FailureMessage,
-  RetryButton,
   ButtonText,
   Separator,
   ChannelDetailsContainer,
@@ -241,19 +240,7 @@ class VideoItemDetails extends Component {
     this.getVideoObject()
   }
 
-  renderFailureView = () => (
-    <VideoItemFailureView>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailureMessage>
-        We are having some trouble to complete your request. Please try again.
-      </FailureMessage>
-      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
-    </VideoItemFailureView>
-  )
+  renderFailureView = () => <FailureView onClickRetry={this.onClickRetry} />
 
   renderPageViews = () => {
     const {apiStatus} = this.state

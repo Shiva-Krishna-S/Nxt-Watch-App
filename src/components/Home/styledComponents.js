@@ -16,14 +16,10 @@ export const HomeContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
-  padding-top: 10px;
-  padding-left: 20px;
   width: 100%;
   @media screen and (min-width: 768px) {
     flex-grow: 1;
     overflow-y: auto;
-    padding-top: 20px;
-    padding-left: 40px;
   }
 `
 
@@ -34,10 +30,10 @@ export const BannerContainer = styled.div`
   justify-content: space-between;
   background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
   background-size: cover;
-  padding: 10px;
+  padding: 20px;
   @media screen and (min-width: 768px) {
     height: 300px;
-    padding: 25px;
+    padding: 30px;
   }
 `
 

@@ -1,15 +1,16 @@
 import {Component} from 'react'
 import {MdSearch} from 'react-icons/md'
+
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
+
 import VideoCard from '../VideoCard'
+import FailureView from '../FailureView'
+import NxtVideosContext from '../../context/NxtVideosContext'
+
 import {
   AllVideosListContainer,
   InProgressContainer,
-  AllVideosFailureView,
-  FailureImage,
-  FailureHeading,
-  FailureMessage,
   RetryButton,
   SearchContainer,
   SearchInput,
@@ -93,26 +94,28 @@ class AllVideosSection extends Component {
     this.setState({searchInput: ''}, this.getAllVideosData)
   }
 
-  renderNoSearchResults = () => (
+  renderNoSearchResults = isDarkTheme => (
     <NoSearchResultsView>
       <NoSearchResultsImage
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
         alt="no videos"
       />
-      <NoSearchResultsHeading>No Search results found</NoSearchResultsHeading>
-      <NoSearchResultsMessage>
+      <NoSearchResultsHeading isDarkTheme={isDarkTheme}>
+        No Search results found
+      </NoSearchResultsHeading>
+      <NoSearchResultsMessage isDarkTheme={isDarkTheme}>
         Try different key words or remove search filter
       </NoSearchResultsMessage>
       <RetryButton onClick={this.retrySearching}>Retry</RetryButton>
     </NoSearchResultsView>
   )
 
-  renderSuccessView = () => {
+  renderSuccessView = isDarkTheme => {
     const {allVideosList} = this.state
     const shouldShowVideoList = allVideosList.length === 0
 
     return shouldShowVideoList ? (
-      this.renderNoSearchResults()
+      this.renderNoSearchResults(isDarkTheme)
     ) : (
       <AllVideosListContainer>
         {allVideosList.map(eachVideo => (
@@ -132,26 +135,14 @@ class AllVideosSection extends Component {
     this.getAllVideosData()
   }
 
-  renderFailureView = () => (
-    <AllVideosFailureView>
-      <FailureImage
-        src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-        alt="failure view"
-      />
-      <FailureHeading>Oops! Something Went Wrong</FailureHeading>
-      <FailureMessage>
-        We are having some trouble to complete your request. Please try again.
-      </FailureMessage>
-      <RetryButton onClick={this.onClickRetry}>Retry</RetryButton>
-    </AllVideosFailureView>
-  )
+  renderFailureView = () => <FailureView onClickRetry={this.onClickRetry} />
 
-  renderPageViews = () => {
+  renderPageViews = isDarkTheme => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderSuccessView()
+        return this.renderSuccessView(isDarkTheme)
       case apiStatusConstants.inProgress:
         return this.renderInProgressView()
       case apiStatusConstants.failure:
@@ -164,24 +155,36 @@ class AllVideosSection extends Component {
   render() {
     const {searchInput} = this.state
     return (
-      <>
-        <SearchContainer>
-          <SearchInput
-            type="search"
-            placeholder="Search"
-            value={searchInput}
-            onChange={this.onChangeSearchInput}
-            onKeyDown={this.onSearchInputKeydown}
-          />
-          <SearchButton
-            onClick={this.onClickSearchIcon}
-            data-testid="searchButton"
-          >
-            <MdSearch size={15} />
-          </SearchButton>
-        </SearchContainer>
-        {this.renderPageViews()}
-      </>
+      <NxtVideosContext.Consumer>
+        {value => {
+          const {isDarkTheme} = value
+          return (
+            <>
+              <SearchContainer>
+                <SearchInput
+                  type="search"
+                  placeholder="Search"
+                  value={searchInput}
+                  onChange={this.onChangeSearchInput}
+                  onKeyDown={this.onSearchInputKeydown}
+                  isDarkTheme={isDarkTheme}
+                />
+                <SearchButton
+                  onClick={this.onClickSearchIcon}
+                  data-testid="searchButton"
+                  isDarkTheme={isDarkTheme}
+                >
+                  <MdSearch
+                    size={15}
+                    color={isDarkTheme ? '#e2e8f0' : '#181818'}
+                  />
+                </SearchButton>
+              </SearchContainer>
+              {this.renderPageViews(isDarkTheme)}
+            </>
+          )
+        }}
+      </NxtVideosContext.Consumer>
     )
   }
 }
