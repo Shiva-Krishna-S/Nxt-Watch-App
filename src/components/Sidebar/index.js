@@ -1,3 +1,4 @@
+import {withRouter} from 'react-router-dom'
 import {AiFillHome} from 'react-icons/ai'
 import {HiFire} from 'react-icons/hi'
 import {SiYoutubegaming} from 'react-icons/si'
@@ -18,26 +19,13 @@ import {
   NavLink,
 } from './styledComponents'
 
-const Sidebar = () => (
+const Sidebar = props => (
   <NxtVideosContext.Consumer>
     {value => {
-      const {isDarkTheme, activeTab, onChangeTab} = value
+      const {isDarkTheme} = value
 
-      const changeToHome = () => {
-        onChangeTab('Home')
-      }
-
-      const changeToGaming = () => {
-        onChangeTab('Gaming')
-      }
-
-      const changeToTrending = () => {
-        onChangeTab('Trending')
-      }
-
-      const changeToSavedVideos = () => {
-        onChangeTab('Saved Videos')
-      }
+      const {match} = props
+      const {path} = match
 
       const activeTabBgColor = isDarkTheme ? '#383838' : '#f1f5f9'
 
@@ -45,34 +33,27 @@ const Sidebar = () => (
         <SidebarContainer>
           <OptionsContainer>
             <NavLink to="/">
-              <OptionContainer
-                onClick={changeToHome}
-                bgColor={activeTab === 'Home' ? activeTabBgColor : null}
-              >
+              <OptionContainer bgColor={path === '/' ? activeTabBgColor : null}>
                 <AiFillHome
-                  color={activeTab === 'Home' ? '#ff0000' : '#475569'}
+                  color={path === '/' ? '#ff0000' : '#475569'}
                   size={17}
                 />
-                <OptionText
-                  isDarkTheme={isDarkTheme}
-                  isActive={activeTab === 'Home'}
-                >
+                <OptionText isDarkTheme={isDarkTheme} isActive={path === '/'}>
                   Home
                 </OptionText>
               </OptionContainer>
             </NavLink>
             <NavLink to="/trending">
               <OptionContainer
-                onClick={changeToTrending}
-                bgColor={activeTab === 'Trending' ? activeTabBgColor : null}
+                bgColor={path === '/trending' ? activeTabBgColor : null}
               >
                 <HiFire
-                  color={activeTab === 'Trending' ? '#ff0000' : '#475569'}
+                  color={path === '/trending' ? '#ff0000' : '#475569'}
                   size={17}
                 />
                 <OptionText
                   isDarkTheme={isDarkTheme}
-                  isActive={activeTab === 'Trending'}
+                  isActive={path === '/trending'}
                 >
                   Trending
                 </OptionText>
@@ -80,16 +61,15 @@ const Sidebar = () => (
             </NavLink>
             <NavLink to="/gaming">
               <OptionContainer
-                onClick={changeToGaming}
-                bgColor={activeTab === 'Gaming' ? activeTabBgColor : null}
+                bgColor={path === '/gaming' ? activeTabBgColor : null}
               >
                 <SiYoutubegaming
-                  color={activeTab === 'Gaming' ? '#ff0000' : '#475569'}
+                  color={path === '/gaming' ? '#ff0000' : '#475569'}
                   size={17}
                 />
                 <OptionText
                   isDarkTheme={isDarkTheme}
-                  isActive={activeTab === 'Gaming'}
+                  isActive={path === '/gaming'}
                 >
                   Gaming
                 </OptionText>
@@ -97,16 +77,15 @@ const Sidebar = () => (
             </NavLink>
             <NavLink to="/saved-videos">
               <OptionContainer
-                onClick={changeToSavedVideos}
-                bgColor={activeTab === 'Saved Videos' ? activeTabBgColor : null}
+                bgColor={path === '/saved-videos' ? activeTabBgColor : null}
               >
                 <BiListPlus
-                  color={activeTab === 'Saved Videos' ? '#ff0000' : '#475569'}
+                  color={path === '/saved-videos' ? '#ff0000' : '#475569'}
                   size={17}
                 />
                 <OptionText
                   isDarkTheme={isDarkTheme}
-                  isActive={activeTab === 'Saved Videos'}
+                  isActive={path === '/saved-videos'}
                 >
                   Saved Videos
                 </OptionText>
@@ -139,4 +118,4 @@ const Sidebar = () => (
   </NxtVideosContext.Consumer>
 )
 
-export default Sidebar
+export default withRouter(Sidebar)

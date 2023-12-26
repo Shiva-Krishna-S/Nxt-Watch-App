@@ -40,28 +40,15 @@ import {
 const Header = props => (
   <NxtVideosContext.Consumer>
     {value => {
-      const {isDarkTheme, activeTab, onChangeTab, onChangeTheme} = value
+      const {isDarkTheme, onChangeTheme} = value
+
+      const {match} = props
+      const {path} = match
 
       const onClickLogout = () => {
         const {history} = props
         Cookies.remove('jwt_token')
         history.replace('/login')
-      }
-
-      const changeToHome = () => {
-        onChangeTab('Home')
-      }
-
-      const changeToGaming = () => {
-        onChangeTab('Gaming')
-      }
-
-      const changeToTrending = () => {
-        onChangeTab('Trending')
-      }
-
-      const changeToSavedVideos = () => {
-        onChangeTab('Saved Videos')
       }
 
       const onClickThemeButton = () => {
@@ -116,20 +103,15 @@ const Header = props => (
                         <NavMenuItemsContainer>
                           <StyledLink to="/">
                             <MenuItem
-                              onClick={changeToHome}
-                              bgColor={
-                                activeTab === 'Home' ? activeTabBgColor : null
-                              }
+                              bgColor={path === '/' ? activeTabBgColor : null}
                             >
                               <AiFillHome
-                                color={
-                                  activeTab === 'Home' ? '#ff0000' : '#475569'
-                                }
+                                color={path === '/' ? '#ff0000' : '#475569'}
                                 size={17}
                               />
                               <MenuItemName
                                 isDarkTheme={isDarkTheme}
-                                isActive={activeTab === 'Home'}
+                                isActive={path === '/'}
                               >
                                 Home
                               </MenuItemName>
@@ -137,24 +119,19 @@ const Header = props => (
                           </StyledLink>
                           <StyledLink to="/trending">
                             <MenuItem
-                              onClick={changeToTrending}
                               bgColor={
-                                activeTab === 'Trending'
-                                  ? activeTabBgColor
-                                  : null
+                                path === '/trending' ? activeTabBgColor : null
                               }
                             >
                               <HiFire
                                 color={
-                                  activeTab === 'Trending'
-                                    ? '#ff0000'
-                                    : '#475569'
+                                  path === '/trending' ? '#ff0000' : '#475569'
                                 }
                                 size={17}
                               />
                               <MenuItemName
                                 isDarkTheme={isDarkTheme}
-                                isActive={activeTab === 'Trending'}
+                                isActive={path === '/trending'}
                               >
                                 Trending
                               </MenuItemName>
@@ -162,20 +139,19 @@ const Header = props => (
                           </StyledLink>
                           <StyledLink to="/gaming">
                             <MenuItem
-                              onClick={changeToGaming}
                               bgColor={
-                                activeTab === 'Gaming' ? activeTabBgColor : null
+                                path === '/gaming' ? activeTabBgColor : null
                               }
                             >
                               <SiYoutubegaming
                                 color={
-                                  activeTab === 'Gaming' ? '#ff0000' : '#475569'
+                                  path === '/gaming' ? '#ff0000' : '#475569'
                                 }
                                 size={17}
                               />
                               <MenuItemName
                                 isDarkTheme={isDarkTheme}
-                                isActive={activeTab === 'Gaming'}
+                                isActive={path === '/gaming'}
                               >
                                 Gaming
                               </MenuItemName>
@@ -183,16 +159,15 @@ const Header = props => (
                           </StyledLink>
                           <StyledLink to="/saved-videos">
                             <MenuItem
-                              onClick={changeToSavedVideos}
                               bgColor={
-                                activeTab === 'Saved Videos'
+                                path === '/saved-videos'
                                   ? activeTabBgColor
                                   : null
                               }
                             >
                               <BiListPlus
                                 color={
-                                  activeTab === 'Saved Videos'
+                                  path === '/saved-videos'
                                     ? '#ff0000'
                                     : '#475569'
                                 }
@@ -200,7 +175,7 @@ const Header = props => (
                               />
                               <MenuItemName
                                 isDarkTheme={isDarkTheme}
-                                isActive={activeTab === 'Saved Videos'}
+                                isActive={path === '/saved-videos'}
                               >
                                 Saved Videos
                               </MenuItemName>
