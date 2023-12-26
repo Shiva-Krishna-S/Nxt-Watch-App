@@ -8,7 +8,7 @@ export const HomePageMainContainer = styled.div`
 export const HomePageResponsiveContainer = styled.div`
   display: flex;
   @media screen and (min-width: 768px) {
-    height: 90vh;
+    height: 85vh;
   }
 `
 

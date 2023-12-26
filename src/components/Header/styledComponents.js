@@ -4,6 +4,10 @@ import {Link} from 'react-router-dom'
 export const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
+  min-height: 10vh;
+  @media screen and (min-width: 768px) {
+    height: 15vh;
+  }
 `
 export const NavContentContainer = styled.div`
   width: 100%;

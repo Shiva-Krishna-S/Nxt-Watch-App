@@ -17,6 +17,11 @@ class App extends Component {
     likedVideosList: [],
     dislikedVideosList: [],
     isDarkTheme: false,
+    activeTab: 'Home',
+  }
+
+  onChangeTab = tabName => {
+    this.setState({activeTab: tabName})
   }
 
   onChangeTheme = () => {
@@ -89,6 +94,7 @@ class App extends Component {
       likedVideosList,
       dislikedVideosList,
       isDarkTheme,
+      activeTab,
     } = this.state
 
     return (
@@ -98,6 +104,7 @@ class App extends Component {
           likedVideosList,
           dislikedVideosList,
           isDarkTheme,
+          activeTab,
           addVideoToSavedVideosList: this.addVideoToSavedVideosList,
           removeVideoFromSavedVideosList: this.removeVideoFromSavedVideosList,
           addVideoToLikedVideosList: this.addVideoToLikedVideosList,
@@ -106,6 +113,7 @@ class App extends Component {
           removeVideoFromDislikedVideosList: this
             .removeVideoFromDislikedVideosList,
           onChangeTheme: this.onChangeTheme,
+          onChangeTab: this.onChangeTab,
         }}
       >
         <Switch>

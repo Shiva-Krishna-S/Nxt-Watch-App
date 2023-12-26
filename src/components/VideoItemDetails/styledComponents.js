@@ -9,7 +9,7 @@ export const VideoItemDetailsMainContainer = styled.div`
 export const VideoItemDetailsResponsiveContainer = styled.div`
   display: flex;
   @media screen and (min-width: 768px) {
-    height: 90vh;
+    height: 85vh;
   }
 `
 export const VideoItemDetailsContentContainer = styled.div`
