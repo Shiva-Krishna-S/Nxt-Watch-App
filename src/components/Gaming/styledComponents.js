@@ -14,6 +14,7 @@ export const GamingPageResponsiveContainer = styled.div`
 export const GamingPageContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
   padding-top: 10px;
   padding-left: 20px;
   width: 100%;

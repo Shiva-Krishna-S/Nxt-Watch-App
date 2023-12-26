@@ -33,7 +33,7 @@ export const ContactDetailsContainer = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
 `
-export const ContactUsText = styled.h1`
+export const ContactUsText = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
   font-weight: 500;

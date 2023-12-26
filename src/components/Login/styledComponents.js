@@ -6,11 +6,13 @@ export const LoginPageContainer = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  background-color: ${props => (props.isDarkTheme ? '#231f20' : '#f8fafc')};
 `
 
 export const LoginFormContainer = styled.form`
   width: 90%;
   max-width: 350px;
+  background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +26,8 @@ export const LoginFormContainer = styled.form`
   }
 `
 export const LoginLogo = styled.img`
-  width: 150px;
+  width: 120px;
+  margin-bottom: 20px;
   @media screen and (min-width: 768px) {
     width: 180px;
   }
@@ -42,7 +45,7 @@ export const LoginInputLabel = styled.label`
   font-weight: bold;
   font-size: 12px;
   line-height: 16px;
-  color: #475569;
+  color: ${props => (props.isDarkTheme ? '#f4f4f4' : '#909090')};
 `
 
 export const LoginInputElement = styled.input`
@@ -54,21 +57,23 @@ export const LoginInputElement = styled.input`
   margin-top: 5px;
   padding: 8px 16px 8px 16px;
   outline: none;
+  background-color: transparent;
 `
 
 export const ShowPasswordContainer = styled.div`
   display: flex;
   align-items: center;
   align-self: flex-start;
+  margin: 10px;
 `
 export const PasswordCheckbox = styled.input`
   margin-right: 8px;
 `
 
-export const ShowPasswordText = styled.p`
+export const ShowPasswordText = styled.label`
   font-family: 'Roboto';
   font-size: 14px;
-  color: #0f0f0f;
+  color: ${props => (props.isDarkTheme ? '#f4f4f4' : '#000000')};
 `
 export const LoginButton = styled.button`
   font-family: 'Roboto';
@@ -77,7 +82,7 @@ export const LoginButton = styled.button`
   color: #ffffff;
   height: 40px;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 2px;
   background-color: #0b69ff;
   border-radius: 8px;
@@ -88,7 +93,7 @@ export const LoginButton = styled.button`
 export const ErrorMessageText = styled.p`
   align-self: start;
   font-size: 12px;
-  margin-top: 3px;
+  margin-top: 8px;
   margin-bottom: 0px;
   font-family: 'Roboto';
   font-size: 12px;

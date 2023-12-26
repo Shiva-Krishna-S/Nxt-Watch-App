@@ -1,14 +1,14 @@
-import {Switch, Route, Redirect} from 'react-router-dom'
 import {Component} from 'react'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Home from './components/Home'
 import VideoItemDetails from './components/VideoItemDetails'
 import Trending from './components/Trending'
 import Gaming from './components/Gaming'
 import SavedVideos from './components/SavedVideos'
-import ProtectedRoute from './components/ProtectedRoute'
-import NxtVideosContext from './context/NxtVideosContext'
 import NotFound from './components/NotFound'
+import NxtVideosContext from './context/NxtVideosContext'
 import './App.css'
 
 class App extends Component {

@@ -7,6 +7,7 @@ import Sidebar from '../Sidebar'
 import {
   SavedVideosPageMainContainer,
   SavedVideosPageResponsiveContainer,
+  SavedVideosContentContainer,
   SavedVideosNoResponseView,
   SavedVideosNoResponseImage,
   SavedVideosNoResponseHeading,
@@ -35,7 +36,7 @@ const SavedVideos = () => (
             No Saved videos found
           </SavedVideosNoResponseHeading>
           <SavedVideosNoResponseMessage>
-            You can save your videos while watching them
+            Save your videos by clicking a button
           </SavedVideosNoResponseMessage>
         </SavedVideosNoResponseView>
       )
@@ -62,9 +63,11 @@ const SavedVideos = () => (
           <Header />
           <SavedVideosPageResponsiveContainer>
             <Sidebar />
-            {isSavedVideoListEmpty
-              ? renderNoSavedVideosView()
-              : renderSavedVideosView()}
+            <SavedVideosContentContainer isDarkTheme={isDarkTheme}>
+              {isSavedVideoListEmpty
+                ? renderNoSavedVideosView()
+                : renderSavedVideosView()}
+            </SavedVideosContentContainer>
           </SavedVideosPageResponsiveContainer>
         </SavedVideosPageMainContainer>
       )

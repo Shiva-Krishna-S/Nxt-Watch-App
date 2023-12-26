@@ -140,7 +140,7 @@ class Trending extends Component {
               <Header />
               <TrendingPageResponsiveContainer>
                 <Sidebar />
-                <TrendingPageContentContainer>
+                <TrendingPageContentContainer isDarkTheme={isDarkTheme}>
                   {this.renderPageViews()}
                 </TrendingPageContentContainer>
               </TrendingPageResponsiveContainer>

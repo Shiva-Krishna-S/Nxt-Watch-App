@@ -89,6 +89,10 @@ class AllVideosSection extends Component {
     this.getAllVideosData()
   }
 
+  retrySearching = () => {
+    this.setState({searchInput: ''}, this.getAllVideosData)
+  }
+
   renderNoSearchResults = () => (
     <NoSearchResultsView>
       <NoSearchResultsImage
@@ -99,7 +103,7 @@ class AllVideosSection extends Component {
       <NoSearchResultsMessage>
         Try different key words or remove search filter
       </NoSearchResultsMessage>
-      <RetryButton>Retry</RetryButton>
+      <RetryButton onClick={this.retrySearching}>Retry</RetryButton>
     </NoSearchResultsView>
   )
 
@@ -158,12 +162,14 @@ class AllVideosSection extends Component {
   }
 
   render() {
+    const {searchInput} = this.state
     return (
       <>
         <SearchContainer>
           <SearchInput
             type="search"
             placeholder="Search"
+            value={searchInput}
             onChange={this.onChangeSearchInput}
             onKeyDown={this.onSearchInputKeydown}
           />

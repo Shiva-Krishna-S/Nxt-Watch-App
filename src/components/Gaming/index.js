@@ -140,7 +140,7 @@ class Gaming extends Component {
               <Header />
               <GamingPageResponsiveContainer>
                 <Sidebar />
-                <GamingPageContentContainer>
+                <GamingPageContentContainer isDarkTheme={isDarkTheme}>
                   {this.renderPageViews()}
                 </GamingPageContentContainer>
               </GamingPageResponsiveContainer>

@@ -21,11 +21,11 @@ const NotFound = () => (
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
 
       return (
-        <NotFoundPageMainContainer>
+        <NotFoundPageMainContainer isDarkTheme={isDarkTheme}>
           <Header />
           <NotFoundPageResponsiveContainer>
             <Sidebar />
-            <NotFoundContentContainer>
+            <NotFoundContentContainer isDarkTheme={isDarkTheme}>
               <NotFoundView>
                 <NotFoundImage src={notFoundImageUrl} alt="not found" />
                 <NotFoundHeading>Page Not Found</NotFoundHeading>

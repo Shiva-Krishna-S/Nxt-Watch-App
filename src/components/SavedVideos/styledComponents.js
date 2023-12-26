@@ -11,6 +11,21 @@ export const SavedVideosPageResponsiveContainer = styled.div`
     height: 90vh;
   }
 `
+export const SavedVideosContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
+  padding-top: 10px;
+  padding-left: 20px;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-left: 40px;
+  }
+`
+
 export const SavedVideosNoResponseView = styled.div`
   display: flex;
   flex-direction: column;

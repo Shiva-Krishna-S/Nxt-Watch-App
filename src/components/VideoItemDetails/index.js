@@ -192,7 +192,7 @@ class VideoItemDetails extends Component {
                       isActive={isLikeButtonActive}
                     >
                       <BiLike />
-                      <ButtonText>Like</ButtonText>
+                      Like
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -200,7 +200,7 @@ class VideoItemDetails extends Component {
                       isActive={isDislikeButtonActive}
                     >
                       <BiDislike />
-                      <ButtonText>Dislike</ButtonText>
+                      Dislike
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -284,7 +284,7 @@ class VideoItemDetails extends Component {
               <Header />
               <VideoItemDetailsResponsiveContainer>
                 <Sidebar />
-                <VideoItemDetailsContentContainer>
+                <VideoItemDetailsContentContainer isDarkTheme={isDarkTheme}>
                   {this.renderPageViews()}
                 </VideoItemDetailsContentContainer>
               </VideoItemDetailsResponsiveContainer>

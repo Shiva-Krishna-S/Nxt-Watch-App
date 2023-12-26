@@ -36,7 +36,7 @@ class Home extends Component {
               <Header />
               <HomePageResponsiveContainer>
                 <Sidebar />
-                <HomeContentContainer>
+                <HomeContentContainer isDarkTheme={isDarkTheme}>
                   {showBanner ? (
                     <BannerContainer data-testid="banner">
                       <BannerContent>

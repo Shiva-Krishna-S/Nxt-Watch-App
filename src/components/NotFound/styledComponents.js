@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const NotFoundPageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
 `
 export const NotFoundPageResponsiveContainer = styled.div`
   display: flex;
@@ -14,6 +15,7 @@ export const NotFoundPageResponsiveContainer = styled.div`
 export const NotFoundContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
   padding-top: 10px;
   padding-left: 20px;
   width: 100%;
