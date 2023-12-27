@@ -10,7 +10,7 @@ export const SavedVideosPageResponsiveContainer = styled.div`
   display: flex;
   min-height: 90vh;
   @media screen and (min-width: 768px) {
-    min-height: 85vh;
+    height: 85vh;
   }
 `
 export const SavedVideosContentContainer = styled.div`
