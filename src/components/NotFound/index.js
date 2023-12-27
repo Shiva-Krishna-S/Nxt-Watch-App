@@ -28,8 +28,10 @@ const NotFound = () => (
             <NotFoundContentContainer isDarkTheme={isDarkTheme}>
               <NotFoundView>
                 <NotFoundImage src={notFoundImageUrl} alt="not found" />
-                <NotFoundHeading>Page Not Found</NotFoundHeading>
-                <NotFoundMessage>
+                <NotFoundHeading isDarkTheme={isDarkTheme}>
+                  Page Not Found
+                </NotFoundHeading>
+                <NotFoundMessage isDarkTheme={isDarkTheme}>
                   We are sorry, the page you requested could not be found.
                 </NotFoundMessage>
               </NotFoundView>

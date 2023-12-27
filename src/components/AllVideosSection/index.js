@@ -57,10 +57,8 @@ class AllVideosSection extends Component {
       //   console.log(data)
       const fetchedVideosData = data.videos.map(eachItem => ({
         id: eachItem.id,
-        channel: {
-          name: eachItem.channel.name,
-          profileImageUrl: eachItem.channel.profile_image_url,
-        },
+        name: eachItem.channel.name,
+        profileImageUrl: eachItem.channel.profile_image_url,
         publishedAt: eachItem.published_at,
         thumbnailUrl: eachItem.thumbnail_url,
         title: eachItem.title,
@@ -104,7 +102,7 @@ class AllVideosSection extends Component {
         No Search results found
       </NoSearchResultsHeading>
       <NoSearchResultsMessage isDarkTheme={isDarkTheme}>
-        Try different key words or remove search filter
+        Try different keywords or remove search filter
       </NoSearchResultsMessage>
       <RetryButton onClick={this.retrySearching}>Retry</RetryButton>
     </NoSearchResultsView>

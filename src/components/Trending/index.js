@@ -16,6 +16,7 @@ import {
   TrendingItemsList,
   TrendingSuccessViewContainer,
   TrendingTopSection,
+  IconContainer,
   TrendingTitle,
   TrendingPageMainContainer,
   TrendingPageResponsiveContainer,
@@ -70,14 +71,17 @@ class Trending extends Component {
     }
   }
 
-  renderSuccessView = () => {
+  renderSuccessView = isDarkTheme => {
     const {trendingVideosList} = this.state
 
     return (
       <TrendingSuccessViewContainer>
-        <TrendingTopSection data-testid="banner">
-          <HiFire />
-          <TrendingTitle>Trending</TrendingTitle>
+        <TrendingTopSection data-testid="banner" isDarkTheme={isDarkTheme}>
+          <IconContainer isDarkTheme={isDarkTheme}>
+            <HiFire size={30} color="#ff0000" />
+          </IconContainer>
+
+          <TrendingTitle isDarkTheme={isDarkTheme}>Trending</TrendingTitle>
         </TrendingTopSection>
         <TrendingItemsList>
           {trendingVideosList.map(eachVideo => (
@@ -100,12 +104,12 @@ class Trending extends Component {
 
   renderFailureView = () => <FailureView onClickRetry={this.onClickRetry} />
 
-  renderPageViews = () => {
+  renderPageViews = isDarkTheme => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderSuccessView()
+        return this.renderSuccessView(isDarkTheme)
       case apiStatusConstants.inProgress:
         return this.renderInProgressView()
       case apiStatusConstants.failure:
@@ -129,7 +133,7 @@ class Trending extends Component {
               <TrendingPageResponsiveContainer>
                 <Sidebar />
                 <TrendingPageContentContainer isDarkTheme={isDarkTheme}>
-                  {this.renderPageViews()}
+                  {this.renderPageViews(isDarkTheme)}
                 </TrendingPageContentContainer>
               </TrendingPageResponsiveContainer>
             </TrendingPageMainContainer>

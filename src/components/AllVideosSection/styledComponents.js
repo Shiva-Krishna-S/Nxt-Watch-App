@@ -36,15 +36,17 @@ export const SearchButton = styled.button`
 `
 
 export const AllVideosListContainer = styled.ul`
-  padding-left: 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   @media screen and (min-width: 576px) {
     margin: 15px;
+    margin-top: 0;
   }
   @media screen and (min-width: 768px) {
     margin: 20px;
+    margin-top: 0;
   }
 `
 export const InProgressContainer = styled.div`

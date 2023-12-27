@@ -14,6 +14,7 @@ import {
   SavedVideosNoResponseMessage,
   SavedVideosContainer,
   SavedVideosTopSection,
+  IconContainer,
   SavedVideosTitle,
   SavedVideosList,
 } from './styledComponents'
@@ -32,10 +33,10 @@ const SavedVideos = () => (
             alt="no saved videos"
             width="100%"
           />
-          <SavedVideosNoResponseHeading>
+          <SavedVideosNoResponseHeading isDarkTheme={isDarkTheme}>
             No Saved videos found
           </SavedVideosNoResponseHeading>
-          <SavedVideosNoResponseMessage>
+          <SavedVideosNoResponseMessage isDarkTheme={isDarkTheme}>
             Save your videos by clicking a button
           </SavedVideosNoResponseMessage>
         </SavedVideosNoResponseView>
@@ -43,9 +44,14 @@ const SavedVideos = () => (
 
       const renderSavedVideosView = () => (
         <SavedVideosContainer>
-          <SavedVideosTopSection data-testid="banner">
-            <BiListPlus />
-            <SavedVideosTitle>Saved Videos</SavedVideosTitle>
+          <SavedVideosTopSection data-testid="banner" isDarkTheme={isDarkTheme}>
+            <IconContainer isDarkTheme={isDarkTheme}>
+              <BiListPlus size={30} color="#ff0000" />
+            </IconContainer>
+
+            <SavedVideosTitle isDarkTheme={isDarkTheme}>
+              Saved Videos
+            </SavedVideosTitle>
           </SavedVideosTopSection>
           <SavedVideosList>
             {savedVideosList.map(eachItem => (

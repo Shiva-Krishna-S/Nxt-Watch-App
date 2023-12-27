@@ -226,7 +226,14 @@ const Header = props => (
                 </NavItemButton>
 
                 <>
-                  <Popup modal trigger={<LogoutButton>Logout</LogoutButton>}>
+                  <Popup
+                    modal
+                    trigger={
+                      <LogoutButton isDarkTheme={isDarkTheme}>
+                        Logout
+                      </LogoutButton>
+                    }
+                  >
                     {close => (
                       <ModalContainer>
                         <div>

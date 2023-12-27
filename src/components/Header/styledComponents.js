@@ -70,8 +70,6 @@ export const ProfileImage = styled.img`
 export const LogoutButton = styled.button`
   background-color: transparent;
   border: 1px solid blue;
-  border-radius: 4px;
-  color: blue;
   font-family: 'Roboto';
   font-size: 14px;
   font-weight: 500;
@@ -82,6 +80,8 @@ export const LogoutButton = styled.button`
   padding-bottom: 5px;
   padding-right: 12px;
   margin-left: 35px;
+  border-color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
 `
 
 export const ModalContainerForMenuItems = styled.div`

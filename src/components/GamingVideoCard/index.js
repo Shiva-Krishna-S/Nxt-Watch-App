@@ -1,3 +1,5 @@
+import NxtVideosContext from '../../context/NxtVideosContext'
+
 import {
   VideoCardItem,
   VideoThumbnailImage,
@@ -7,21 +9,28 @@ import {
   StyledLink,
 } from './styledComponents'
 
-const GamingVideoCard = props => {
-  const {videoDetails} = props
-  const {id, thumbnailUrl, title, viewCount} = videoDetails
+const GamingVideoCard = props => (
+  <NxtVideosContext.Consumer>
+    {value => {
+      const {isDarkTheme} = value
+      const {videoDetails} = props
+      const {id, thumbnailUrl, title, viewCount} = videoDetails
 
-  return (
-    <VideoCardItem>
-      <StyledLink to={`/videos/${id}`}>
-        <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
-        <VideoDetailsContainer>
-          <VideoTitle>{title}</VideoTitle>
-          <StatText>{viewCount} Watching Worldwide</StatText>
-        </VideoDetailsContainer>
-      </StyledLink>
-    </VideoCardItem>
-  )
-}
+      return (
+        <VideoCardItem isDarkTheme={isDarkTheme}>
+          <StyledLink to={`/videos/${id}`}>
+            <VideoThumbnailImage src={thumbnailUrl} alt="video thumbnail" />
+            <VideoDetailsContainer>
+              <VideoTitle isDarkTheme={isDarkTheme}>{title}</VideoTitle>
+              <StatText isDarkTheme={isDarkTheme}>
+                {viewCount} Watching Worldwide
+              </StatText>
+            </VideoDetailsContainer>
+          </StyledLink>
+        </VideoCardItem>
+      )
+    }}
+  </NxtVideosContext.Consumer>
+)
 
 export default GamingVideoCard

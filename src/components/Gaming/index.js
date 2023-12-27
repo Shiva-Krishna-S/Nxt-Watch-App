@@ -16,6 +16,7 @@ import {
   InProgressContainer,
   GamingPageContainer,
   GamingBannerSection,
+  IconContainer,
   GamingTitle,
   GamingPageMainContainer,
   GamingPageResponsiveContainer,
@@ -70,14 +71,16 @@ class Gaming extends Component {
     }
   }
 
-  renderSuccessView = () => {
+  renderSuccessView = isDarkTheme => {
     const {gamingVideosList} = this.state
 
     return (
       <GamingPageContainer>
-        <GamingBannerSection data-testid="banner">
-          <SiYoutubegaming />
-          <GamingTitle>Gaming</GamingTitle>
+        <GamingBannerSection data-testid="banner" isDarkTheme={isDarkTheme}>
+          <IconContainer isDarkTheme={isDarkTheme}>
+            <SiYoutubegaming size={27} color="#ff0000" />
+          </IconContainer>
+          <GamingTitle isDarkTheme={isDarkTheme}>Gaming</GamingTitle>
         </GamingBannerSection>
         <GamingVideosListContainer>
           {gamingVideosList.map(eachVideo => (
@@ -100,12 +103,12 @@ class Gaming extends Component {
 
   renderFailureView = () => <FailureView onClickRetry={this.onClickRetry} />
 
-  renderPageViews = () => {
+  renderPageViews = isDarkTheme => {
     const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.success:
-        return this.renderSuccessView()
+        return this.renderSuccessView(isDarkTheme)
       case apiStatusConstants.inProgress:
         return this.renderInProgressView()
       case apiStatusConstants.failure:
@@ -129,7 +132,7 @@ class Gaming extends Component {
               <GamingPageResponsiveContainer>
                 <Sidebar />
                 <GamingPageContentContainer isDarkTheme={isDarkTheme}>
-                  {this.renderPageViews()}
+                  {this.renderPageViews(isDarkTheme)}
                 </GamingPageContentContainer>
               </GamingPageResponsiveContainer>
             </GamingPageMainContainer>

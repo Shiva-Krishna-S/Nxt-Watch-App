@@ -5,8 +5,10 @@ export const VideoCardItem = styled.li`
   list-style-type: none;
   width: 100%;
   min-height: 280px;
-  max-height: 330px;
+  max-height: 380px;
+  padding-bottom: 10px;
   margin-bottom: 20px;
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f1f5f9')};
   @media screen and (min-width: 576px) and (max-width: 991px) {
     width: 49%;
   }
@@ -30,8 +32,8 @@ export const ChannelImage = styled.img`
   height: 40px;
   width: 40px;
   flex-shrink: 0;
+  margin: 8px;
   margin-top: 18px;
-  margin-right: 8px;
 `
 export const VideoStatsContainer = styled.div`
   display: flex;
@@ -40,8 +42,9 @@ export const VideoStatsContainer = styled.div`
 
 export const VideoTitle = styled.p`
   font-family: 'Roboto';
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 0;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#212121')};
 `
 export const StatusDetailsContainer = styled.div`
   display: flex;
@@ -61,15 +64,20 @@ export const StatText = styled.p`
   font-size: 12px;
   margin-bottom: 0;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
 `
-export const StatDotOne = styled.div`
+export const StatDotOne = styled.p`
   display: flex;
+  margin-bottom: 7px;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
   @media screen and (min-width: 576px) {
     display: none;
   }
 `
-export const StatDotTwo = styled.div`
+export const StatDotTwo = styled.p`
   display: flex;
+  margin-bottom: 7px;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
 `

@@ -5,6 +5,7 @@ export const TrendingVideoCardItem = styled.li`
   list-style-type: none;
   width: 100%;
   margin-bottom: 15px;
+  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f1f5f9')};
 `
 export const StyledLink = styled(Link)`
   display: flex;
@@ -17,10 +18,13 @@ export const StyledLink = styled(Link)`
 
 export const VideoThumbnailImage = styled.img`
   width: 100%;
+  max-height: 250px;
   @media screen and (min-width: 576px) {
     width: 50%;
-    max-width: 400px;
-    max-height: 250px;
+    height: 200px;
+  }
+  @media screen and (min-width: 992px) {
+    height: 250px;
   }
 `
 export const VideoDetailsContainer = styled.div`
@@ -30,8 +34,8 @@ export const ChannelImage = styled.img`
   height: 40px;
   width: 40px;
   flex-shrink: 0;
+  margin: 8px;
   margin-top: 18px;
-  margin-right: 8px;
   @media screen and (min-width: 576px) {
     display: none;
   }
@@ -47,8 +51,12 @@ export const VideoStatsContainer = styled.div`
 
 export const VideoTitle = styled.p`
   font-family: 'Roboto';
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 0;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#212121')};
+  @media screen and (min-width: 768px) {
+    font-size: 21px;
+  }
 `
 export const StatusDetailsContainer = styled.div`
   display: flex;
@@ -68,15 +76,27 @@ export const StatText = styled.p`
   font-size: 12px;
   margin-bottom: 0;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+  }
 `
-export const StatDotOne = styled.div`
+export const StatDotOne = styled.p`
   display: flex;
+  margin-bottom: 7px;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
   @media screen and (min-width: 576px) {
     display: none;
   }
 `
-export const StatDotTwo = styled.div`
+export const StatDotTwo = styled.p`
   display: flex;
+  margin-bottom: 7px;
   margin-right: 10px;
+  color: ${props => (props.isDarkTheme ? '#616e7c' : '#909090')};
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
 `

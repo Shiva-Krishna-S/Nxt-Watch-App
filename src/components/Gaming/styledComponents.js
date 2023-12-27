@@ -15,14 +15,10 @@ export const GamingPageContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
-  padding-top: 10px;
-  padding-left: 20px;
   width: 100%;
   @media screen and (min-width: 768px) {
     flex-grow: 1;
     overflow-y: auto;
-    padding-top: 20px;
-    padding-left: 40px;
   }
 `
 export const GamingPageContainer = styled.div`
@@ -32,18 +28,44 @@ export const GamingPageContainer = styled.div`
 export const GamingBannerSection = styled.div`
   display: flex;
   align-items: center;
+  padding: 10px;
+  background-color: ${props => (props.isDarkTheme ? '#231f20' : '#ebebeb')};
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
 `
+
+export const IconContainer = styled.div`
+  background-color: ${props => (props.isDarkTheme ? '#000000' : '#cbd5e1')};
+  border-radius: 50px;
+  padding: 5px;
+  @media screen and (min-width: 768px) {
+    padding: 25px;
+  }
+`
+
 export const GamingTitle = styled.h1`
   font-family: 'Roboto';
-  font-size: 24px;
+  font-size: 21px;
   margin-left: 14px;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
 `
 
 export const GamingVideosListContainer = styled.ul`
-  padding-left: 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin: 10px;
+  @media screen and (min-width: 576px) {
+    margin: 15px;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 20px;
+  }
 `
 export const InProgressContainer = styled.div`
   display: flex;

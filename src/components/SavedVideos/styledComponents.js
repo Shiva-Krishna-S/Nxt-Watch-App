@@ -15,15 +15,16 @@ export const SavedVideosContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${props => (props.isDarkTheme ? ' #000000' : '#ffffff')};
-  padding-top: 10px;
-  padding-left: 20px;
   width: 100%;
   @media screen and (min-width: 768px) {
     flex-grow: 1;
     overflow-y: auto;
-    padding-top: 20px;
-    padding-left: 40px;
   }
+`
+export const SavedVideosList = styled.ul`
+  padding: 0;
+  display: flex;
+  flex-direction: column;
 `
 
 export const SavedVideosNoResponseView = styled.div`
@@ -34,8 +35,9 @@ export const SavedVideosNoResponseView = styled.div`
   width: 100%;
   min-height: 80vh;
   padding-top: 30px;
+  padding-bottom: 30px;
   @media screen and (min-width: 768px) {
-    min-height: 90vh;
+    min-height: 85vh;
     padding-top: 50px;
     padding-bottom: 50px;
   }
@@ -49,11 +51,13 @@ export const SavedVideosNoResponseHeading = styled.h1`
   font-family: 'Roboto';
   font-size: 21px;
   text-align: center;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#181818')};
 `
 export const SavedVideosNoResponseMessage = styled.p`
   font-family: 'Roboto';
   font-size: 18px;
   text-align: center;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#475569')};
 `
 export const SavedVideosContainer = styled.div`
   display: flex;
@@ -62,14 +66,27 @@ export const SavedVideosContainer = styled.div`
 export const SavedVideosTopSection = styled.div`
   display: flex;
   align-items: center;
+  padding: 10px;
+  background-color: ${props => (props.isDarkTheme ? '#231f20' : '#ebebeb')};
+  @media screen and (min-width: 768px) {
+    padding: 30px;
+  }
 `
+export const IconContainer = styled.div`
+  background-color: ${props => (props.isDarkTheme ? '#000000' : '#cbd5e1')};
+  border-radius: 50px;
+  padding: 5px;
+  @media screen and (min-width: 768px) {
+    padding: 25px;
+  }
+`
+
 export const SavedVideosTitle = styled.h1`
   font-family: 'Roboto';
-  font-size: 24px;
+  font-size: 21px;
   margin-left: 14px;
-`
-export const SavedVideosList = styled.ul`
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#000000')};
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
 `
