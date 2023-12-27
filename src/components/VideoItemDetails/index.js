@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {formatDistanceToNow} from 'date-fns'
-import {BsDot} from 'react-icons/bs'
 import {BiDislike, BiLike, BiListPlus} from 'react-icons/bi'
 
 import ReactPlayer from 'react-player'
@@ -21,7 +20,6 @@ import {
   ReactPlayerContainer,
   VideoItemDetailsContainer,
   VideoTitleText,
-  ViewsAndCountText,
   ButtonsContainer,
   ReactionButton,
   InProgressContainer,
@@ -30,6 +28,11 @@ import {
   ChannelDetailsContainer,
   ChannelImage,
   TextAndButtonsContainer,
+  StatDotOne,
+  StatusDetails,
+  StatText,
+  DescriptionText,
+  ChannelName,
 } from './styledComponents'
 
 const apiStatusConstants = {
@@ -102,6 +105,7 @@ class VideoItemDetails extends Component {
           removeVideoFromLikedVideosList,
           addVideoToDislikedVideosList,
           removeVideoFromDislikedVideosList,
+          isDarkTheme,
         } = value
         const {videoObject} = this.state
         const {
@@ -118,8 +122,9 @@ class VideoItemDetails extends Component {
 
         const formattedTime = formatDistanceToNow(new Date(publishedAt))
         const words = formattedTime.split(' ')
-        const number = words[1]
-        const postedTime = `${number} ${number > 1 ? 'years' : 'year'} ago`
+        const requiredWords = words.slice(1, 3)
+        const time = requiredWords.join(' ')
+        const postedTime = `${time} ago`
 
         const videoObjectFromSavedVideos = savedVideosList.find(
           eachItem => eachItem.id === id,
@@ -177,12 +182,18 @@ class VideoItemDetails extends Component {
               </ReactPlayerContainer>
 
               <VideoItemDetailsContainer>
-                <VideoTitleText>{title}</VideoTitleText>
+                <VideoTitleText isDarkTheme={isDarkTheme}>
+                  {title}
+                </VideoTitleText>
 
                 <TextAndButtonsContainer>
-                  <ViewsAndCountText>
-                    {viewCount} views <BsDot /> {postedTime}
-                  </ViewsAndCountText>
+                  <StatusDetails>
+                    <StatText isDarkTheme={isDarkTheme}>
+                      {viewCount} views
+                    </StatText>
+                    <StatDotOne isDarkTheme={isDarkTheme}>&#8226;</StatDotOne>
+                    <StatText isDarkTheme={isDarkTheme}>{postedTime}</StatText>
+                  </StatusDetails>
 
                   <ButtonsContainer>
                     <ReactionButton
@@ -191,7 +202,7 @@ class VideoItemDetails extends Component {
                       isActive={isLikeButtonActive}
                     >
                       <BiLike />
-                      Like
+                      <ButtonText>Like</ButtonText>
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -199,7 +210,7 @@ class VideoItemDetails extends Component {
                       isActive={isDislikeButtonActive}
                     >
                       <BiDislike />
-                      Dislike
+                      <ButtonText>Dislike</ButtonText>
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -216,13 +227,15 @@ class VideoItemDetails extends Component {
               <ChannelDetailsContainer>
                 <ChannelImage src={profileImageUrl} alt="channel logo" />
                 <div>
-                  <ViewsAndCountText>{name}</ViewsAndCountText>
-                  <ViewsAndCountText>
+                  <ChannelName isDarkTheme={isDarkTheme}>{name}</ChannelName>
+                  <StatText isDarkTheme={isDarkTheme}>
                     {subscriberCount} subscribers
-                  </ViewsAndCountText>
+                  </StatText>
                 </div>
               </ChannelDetailsContainer>
-              <ViewsAndCountText>{description}</ViewsAndCountText>
+              <DescriptionText isDarkTheme={isDarkTheme}>
+                {description}
+              </DescriptionText>
             </ResponsiveContainer>
           </>
         )

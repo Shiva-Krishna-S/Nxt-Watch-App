@@ -4,11 +4,13 @@ export const TrendingPageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${props => (props.isDarkTheme ? '#0f0f0f' : '#f9f9f9')};
+  min-height: 100vh;
 `
 export const TrendingPageResponsiveContainer = styled.div`
   display: flex;
+  min-height: 90vh;
   @media screen and (min-width: 768px) {
-    height: 85vh;
+    min-height: 85vh;
   }
 `
 export const TrendingPageContentContainer = styled.div`

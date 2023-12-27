@@ -6,6 +6,12 @@ export const TrendingVideoCardItem = styled.li`
   width: 100%;
   margin-bottom: 15px;
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#f1f5f9')};
+  @media screen and (min-width: 576px) {
+    width: 85%;
+    margin: auto;
+    margin-bottom: 15px;
+    margin-top: 15px;
+  }
 `
 export const StyledLink = styled(Link)`
   display: flex;
@@ -18,13 +24,12 @@ export const StyledLink = styled(Link)`
 
 export const VideoThumbnailImage = styled.img`
   width: 100%;
-  max-height: 250px;
+  height: 200px;
   @media screen and (min-width: 576px) {
     width: 50%;
-    height: 200px;
   }
-  @media screen and (min-width: 992px) {
-    height: 250px;
+  @media screen and (min-width: 768px) {
+    height: 240px;
   }
 `
 export const VideoDetailsContainer = styled.div`

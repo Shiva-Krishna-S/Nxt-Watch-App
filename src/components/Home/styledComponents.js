@@ -4,14 +4,15 @@ export const HomePageMainContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${props => (props.isDarkTheme ? '#181818' : '#f9f9f9')};
+  min-height: 100vh;
 `
 export const HomePageResponsiveContainer = styled.div`
   display: flex;
+  min-height: 90vh;
   @media screen and (min-width: 768px) {
-    height: 85vh;
+    min-height: 85vh;
   }
 `
-
 export const HomeContentContainer = styled.div`
   display: flex;
   flex-direction: column;

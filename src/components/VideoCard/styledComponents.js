@@ -8,7 +8,10 @@ export const VideoCardItem = styled.li`
   max-height: 380px;
   padding-bottom: 10px;
   margin-bottom: 20px;
-  background-color: ${props => (props.isDarkTheme ? '#181818' : '#f1f5f9')};
+
+  //   background-color: ${props =>
+    props.isDarkTheme ? '#181818' : '#f1f5f9'};
+
   @media screen and (min-width: 576px) and (max-width: 991px) {
     width: 49%;
   }
