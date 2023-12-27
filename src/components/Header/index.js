@@ -35,6 +35,7 @@ import {
   NavItemCloseButton,
   ModalContainerForMenuItems,
   MenuItem,
+  PopupOutlineButton,
 } from './styledComponents'
 
 const Header = props => (
@@ -197,17 +198,25 @@ const Header = props => (
                     }
                   >
                     {close => (
-                      <ModalContainer>
+                      <ModalContainer isDarkTheme={isDarkTheme}>
                         <div>
-                          <PopupMessageText>
+                          <PopupMessageText isDarkTheme={isDarkTheme}>
                             Are you sure, you want to logout?
                           </PopupMessageText>
                         </div>
                         <div>
-                          <PopupButton type="button" onClick={() => close()}>
+                          <PopupOutlineButton
+                            isDarkTheme={isDarkTheme}
+                            type="button"
+                            onClick={() => close()}
+                          >
                             Cancel
-                          </PopupButton>
-                          <PopupButton type="button" onClick={onClickLogout}>
+                          </PopupOutlineButton>
+                          <PopupButton
+                            isDarkTheme={isDarkTheme}
+                            type="button"
+                            onClick={onClickLogout}
+                          >
                             Confirm
                           </PopupButton>
                         </div>
@@ -235,17 +244,25 @@ const Header = props => (
                     }
                   >
                     {close => (
-                      <ModalContainer>
+                      <ModalContainer isDarkTheme={isDarkTheme}>
                         <div>
-                          <PopupMessageText>
+                          <PopupMessageText isDarkTheme={isDarkTheme}>
                             Are you sure, you want to logout?
                           </PopupMessageText>
                         </div>
                         <div>
-                          <PopupButton type="button" onClick={() => close()}>
+                          <PopupOutlineButton
+                            isDarkTheme={isDarkTheme}
+                            type="button"
+                            onClick={() => close()}
+                          >
                             Cancel
-                          </PopupButton>
-                          <PopupButton type="button" onClick={onClickLogout}>
+                          </PopupOutlineButton>
+                          <PopupButton
+                            isDarkTheme={isDarkTheme}
+                            type="button"
+                            onClick={onClickLogout}
+                          >
                             Confirm
                           </PopupButton>
                         </div>

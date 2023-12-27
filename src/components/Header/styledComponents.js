@@ -131,23 +131,40 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  background-color: ${props => (props.isDarkTheme ? '#383838' : '#f8fafc')};
 `
 export const PopupMessageText = styled.p`
   font-size: 16px;
   font-weight: 400;
   font-family: 'Roboto';
   text-align: center;
+  color: ${props => (props.isDarkTheme ? '#f4f4f4' : '#424242')};
 `
 export const PopupButton = styled.button`
   font-size: 16px;
   font-weight: 400;
   font-family: 'Roboto';
-  color: white;
   padding: 8px 15px 8px 15px;
   margin: 8px;
-  background-color: blue;
   border: none;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  color: #ffffff;
+  background-color: #3b82f6;
+`
+
+export const PopupOutlineButton = styled.button`
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  padding: 8px 15px 8px 15px;
+  margin: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  color: #cccccc;
+  background-color: transparent;
 `
