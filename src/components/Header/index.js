@@ -21,10 +21,13 @@ import {
   WebsiteLogoLink,
   NavImage,
   NavItemsMainContainer,
-  NavItemsContainerForMediumAndAboveDevices,
+  NavItem,
+  NavItemMenu,
   NavItemButton,
-  NavItemsContainer,
+  NavItemLogoutIcon,
+  NavItemProfileImage,
   ProfileImage,
+  NavItemLogoutButton,
   LogoutButton,
   NavMenuItemsContainer,
   MenuItemName,
@@ -72,15 +75,17 @@ const Header = props => (
             </WebsiteLogoLink>
 
             <NavItemsMainContainer>
-              <NavItemButton onClick={onClickThemeButton} data-testid="theme">
-                {isDarkTheme ? (
-                  <FiSun size={25} color={iconColor} />
-                ) : (
-                  <FaMoon size={25} color={iconColor} />
-                )}
-              </NavItemButton>
+              <NavItem>
+                <NavItemButton onClick={onClickThemeButton} data-testid="theme">
+                  {isDarkTheme ? (
+                    <FiSun size={25} color={iconColor} />
+                  ) : (
+                    <FaMoon size={25} color={iconColor} />
+                  )}
+                </NavItemButton>
+              </NavItem>
 
-              <NavItemsContainer>
+              <NavItemMenu>
                 <>
                   <Popup
                     modal
@@ -187,7 +192,9 @@ const Header = props => (
                     )}
                   </Popup>
                 </>
+              </NavItemMenu>
 
+              <NavItemLogoutIcon>
                 <>
                   <Popup
                     modal
@@ -224,16 +231,18 @@ const Header = props => (
                     )}
                   </Popup>
                 </>
-              </NavItemsContainer>
+              </NavItemLogoutIcon>
 
-              <NavItemsContainerForMediumAndAboveDevices>
+              <NavItemProfileImage>
                 <NavItemButton>
                   <ProfileImage
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                     alt="profile"
                   />
                 </NavItemButton>
+              </NavItemProfileImage>
 
+              <NavItemLogoutButton>
                 <>
                   <Popup
                     modal
@@ -270,7 +279,7 @@ const Header = props => (
                     )}
                   </Popup>
                 </>
-              </NavItemsContainerForMediumAndAboveDevices>
+              </NavItemLogoutButton>
             </NavItemsMainContainer>
           </NavContentContainer>
         </NavbarContainer>
