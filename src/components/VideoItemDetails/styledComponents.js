@@ -98,18 +98,24 @@ export const ReactionButton = styled.button`
   display: flex;
   align-items: center;
   margin-right: 12px;
-  font-weight: bold;
-  color: ${props => (props.isActive ? '#2563eb' : '#64748b')};
-`
-
-export const ButtonText = styled.span`
   font-family: 'Roboto';
   font-size: 14px;
-  margin-left: 5px;
+  font-weight: bold;
+  color: ${props => (props.isActive ? '#2563eb' : '#64748b')};
   @media screen and (min-width: 768px) {
     font-size: 16px;
   }
 `
+
+// export const ButtonText = styled.span`
+//   font-family: 'Roboto';
+//   font-size: 14px;
+//   margin-left: 5px;
+//   @media screen and (min-width: 768px) {
+//     font-size: 16px;
+//   }
+// `
+
 export const Separator = styled.hr`
   width: 100%;
   border-bottom: 1px solid lightgrey;

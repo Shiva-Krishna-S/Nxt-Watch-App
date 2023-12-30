@@ -23,7 +23,6 @@ import {
   ButtonsContainer,
   ReactionButton,
   InProgressContainer,
-  ButtonText,
   Separator,
   ChannelDetailsContainer,
   ChannelImage,
@@ -202,7 +201,7 @@ class VideoItemDetails extends Component {
                       isActive={isLikeButtonActive}
                     >
                       <BiLike />
-                      <ButtonText>Like</ButtonText>
+                      Like
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -210,7 +209,7 @@ class VideoItemDetails extends Component {
                       isActive={isDislikeButtonActive}
                     >
                       <BiDislike />
-                      <ButtonText>Dislike</ButtonText>
+                      Dislike
                     </ReactionButton>
                     <ReactionButton
                       type="button"
@@ -218,7 +217,7 @@ class VideoItemDetails extends Component {
                       isActive={isSavedButtonActive}
                     >
                       <BiListPlus />
-                      <ButtonText>{savedButtonText}</ButtonText>
+                      {savedButtonText}
                     </ReactionButton>
                   </ButtonsContainer>
                 </TextAndButtonsContainer>
