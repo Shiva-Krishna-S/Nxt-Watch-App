@@ -155,9 +155,6 @@ export const NavItemProfileImage = styled.li`
 `
 export const ProfileImage = styled.img`
   width: 30px;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
 `
 export const NavItemLogoutButton = styled.li`
   list-style-type: none;
