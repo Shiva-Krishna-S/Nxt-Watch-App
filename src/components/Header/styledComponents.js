@@ -29,11 +29,14 @@ export const NavImage = styled.img`
     width: 140px;
   }
 `
-export const NavItemsMainContainer = styled.div`
+export const NavItemsMainContainer = styled.ul`
   display: flex;
   align-items: center;
+  padding-left: 0;
 `
-
+export const NavItem = styled.li`
+  list-style-type: none;
+`
 export const NavItemButton = styled.button`
   background-color: transparent;
   border: none;
@@ -46,44 +49,12 @@ export const NavItemButton = styled.button`
     margin-left: 35px;
   }
 `
-export const NavItemsContainer = styled.div`
-  display: flex;
-  align-items: center;
+export const NavItemMenu = styled.li`
+  list-style-type: none;
   @media screen and (min-width: 768px) {
     display: none;
   }
 `
-export const NavItemsContainerForMediumAndAboveDevices = styled.div`
-  display: flex;
-  align-items: center;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`
-export const ProfileImage = styled.img`
-  width: 30px;
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
-`
-
-export const LogoutButton = styled.button`
-  background-color: transparent;
-  border: 1px solid blue;
-  font-family: 'Roboto';
-  font-size: 14px;
-  font-weight: 500;
-  outline: none;
-  cursor: pointer;
-  padding-top: 5px;
-  padding-left: 12px;
-  padding-bottom: 5px;
-  padding-right: 12px;
-  margin-left: 35px;
-  border-color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
-  color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
-`
-
 export const ModalContainerForMenuItems = styled.div`
   display: flex;
   flex-direction: column;
@@ -126,6 +97,13 @@ export const MenuItemName = styled.p`
   font-weight: ${props => (props.isActive ? 'bold' : 'normal')};
   color: ${props => (props.isDarkTheme ? '#ffffff' : '#475569')};
 `
+
+export const NavItemLogoutIcon = styled.li`
+  list-style-type: none;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -167,4 +145,54 @@ export const PopupOutlineButton = styled.button`
   cursor: pointer;
   color: #cccccc;
   background-color: transparent;
+`
+
+export const NavItemProfileImage = styled.li`
+  list-style-type: none;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const ProfileImage = styled.img`
+  width: 30px;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const NavItemLogoutButton = styled.li`
+  list-style-type: none;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+
+export const LogoutButton = styled.button`
+  background-color: transparent;
+  border: 1px solid blue;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-left: 12px;
+  padding-bottom: 5px;
+  padding-right: 12px;
+  margin-left: 35px;
+  border-color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
+  color: ${props => (props.isDarkTheme ? '#ffffff' : '#3b82f6')};
+`
+export const NavItemsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+`
+export const NavItemsContainerForMediumAndAboveDevices = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 `
