@@ -44,7 +44,7 @@ const SavedVideos = () => (
 
       const renderSavedVideosView = () => (
         <SavedVideosContainer>
-          <SavedVideosTopSection data-testid="banner" isDarkTheme={isDarkTheme}>
+          <SavedVideosTopSection isDarkTheme={isDarkTheme} data-testid="banner">
             <IconContainer isDarkTheme={isDarkTheme}>
               <BiListPlus size={30} color="#ff0000" />
             </IconContainer>
@@ -63,8 +63,8 @@ const SavedVideos = () => (
 
       return (
         <SavedVideosPageMainContainer
-          data-testid="savedVideos"
           isDarkTheme={isDarkTheme}
+          data-testid="savedVideos"
         >
           <Header />
           <SavedVideosPageResponsiveContainer>

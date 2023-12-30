@@ -127,11 +127,11 @@ class Login extends Component {
                   <ShowPasswordContainer>
                     <PasswordCheckbox
                       type="checkbox"
-                      htmlFor="showPassword"
+                      id="showPassword"
                       onChange={this.onToggleCheckbox}
                     />
                     <ShowPasswordText
-                      id="showPassword"
+                      htmlFor="showPassword"
                       isDarkTheme={isDarkTheme}
                     >
                       Show Password

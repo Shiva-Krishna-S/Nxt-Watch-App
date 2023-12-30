@@ -104,7 +104,9 @@ class AllVideosSection extends Component {
       <NoSearchResultsMessage isDarkTheme={isDarkTheme}>
         Try different key words or remove search filter
       </NoSearchResultsMessage>
-      <RetryButton onClick={this.retrySearching}>Retry</RetryButton>
+      <RetryButton type="button" onClick={this.retrySearching}>
+        Retry
+      </RetryButton>
     </NoSearchResultsView>
   )
 
@@ -168,9 +170,10 @@ class AllVideosSection extends Component {
                   isDarkTheme={isDarkTheme}
                 />
                 <SearchButton
+                  isDarkTheme={isDarkTheme}
                   onClick={this.onClickSearchIcon}
                   data-testid="searchButton"
-                  isDarkTheme={isDarkTheme}
+                  type="button"
                 >
                   <MdSearch
                     size={15}

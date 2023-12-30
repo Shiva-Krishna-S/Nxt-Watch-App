@@ -48,7 +48,7 @@ class Home extends Component {
           const {isDarkTheme} = value
 
           return (
-            <HomePageMainContainer data-testid="home" isDarkTheme={isDarkTheme}>
+            <HomePageMainContainer isDarkTheme={isDarkTheme} data-testid="home">
               <Header />
               <HomePageResponsiveContainer>
                 <Sidebar />

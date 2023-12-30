@@ -31,7 +31,9 @@ const FailureView = props => (
             We are having some trouble to complete your request. Please try
             again.
           </FailureMessage>
-          <RetryButton onClick={onClickRetryButton}>Retry</RetryButton>
+          <RetryButton type="button" onClick={onClickRetryButton}>
+            Retry
+          </RetryButton>
         </AllVideosFailureView>
       )
     }}
