@@ -102,7 +102,7 @@ class AllVideosSection extends Component {
         No Search results found
       </NoSearchResultsHeading>
       <NoSearchResultsMessage isDarkTheme={isDarkTheme}>
-        Try different keywords or remove search filter
+        Try different key words or remove search filter
       </NoSearchResultsMessage>
       <RetryButton onClick={this.retrySearching}>Retry</RetryButton>
     </NoSearchResultsView>
